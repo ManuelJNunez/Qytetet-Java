@@ -5,12 +5,21 @@
  */
 package modeloqytetet;
 
+import java.util.ArrayList;
+import java.util.Iterator;
+
 /**
  *
  * @author manu
  */
 public class PruebaQytetet {
-    public static void main(String args[]){
+    static Qytetet juego = new Qytetet();
+    
+    public static void main(String []args){
+        juego.inicializarCartasSorpresa();
         
+        for(int i = 0; i < juego.getSize(); ++i){
+            System.out.println(juego.getMazo(i).toString());
+        }
     }
 }
