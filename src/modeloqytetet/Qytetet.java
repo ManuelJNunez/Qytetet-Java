@@ -14,12 +14,8 @@ import java.util.ArrayList;
 public class Qytetet {
     private ArrayList<Sorpresa> mazo = new ArrayList<>();
     
-    Sorpresa getMazo(int i){
-        return mazo.get(i);
-    }
-
-    int getSize(){
-        return mazo.size();
+    ArrayList getMazo(){
+        return mazo;
     }
     
     void inicializarCartasSorpresa(){
@@ -32,6 +28,6 @@ public class Qytetet {
         mazo.add(new Sorpresa("Tus edificios son muy bonitos. Recibes un premio de arquitectura.", 25, TipoSorpresa.PORCASAHOTEL));
         mazo.add(new Sorpresa("Los demás se enteran de que tienes cuentas en el extrangero. Mejor sobornarlos para que no hablen, ¿no?", -200, TipoSorpresa.PORJUGADOR));
         mazo.add(new Sorpresa("Parece ser que es tu cumpleaños o tal vez los estés engañando, maldito mentiroso, recibes dinero de los demás como regalo.", 200, TipoSorpresa.PORJUGADOR));
-        mazo.add(new Sorpresa("Tienes contactos en el gobierno que logran sacarte de la cárcel.", -200, TipoSorpresa.SALIRCARCEL));
+        mazo.add(new Sorpresa("Tienes contactos en el gobierno que logran sacarte de la cárcel.", 0, TipoSorpresa.SALIRCARCEL));
     }
 }
