@@ -14,14 +14,18 @@ import java.util.ArrayList;
 public class Qytetet {
     private ArrayList<Sorpresa> mazo = new ArrayList<>();
     
-    ArrayList getMazo(){
-        return mazo;
+    Sorpresa getMazo(int i){
+        return mazo.get(i);
+    }
+
+    int getSize(){
+        return mazo.size();
     }
     
     void inicializarCartasSorpresa(){
         mazo.add(new Sorpresa("El banco se ha equivocado en algunas cuentas y te devuelven dinero. Es que no estudian...", 250, TipoSorpresa.PAGARCOBRAR));
         mazo.add(new Sorpresa("Te han pillado tus cuentas en el extrangero.", -250, TipoSorpresa.PAGARCOBRAR));
-        mazo.add(new Sorpresa("Tomas el tren que aún no ha llegado a Granada y llegas a la casill 17.", 17, TipoSorpresa.IRACASILLA));
+        mazo.add(new Sorpresa("Tomas el tren que aún no ha llegado a Granada y llegas a la casilla 17.", 17, TipoSorpresa.IRACASILLA));
         mazo.add(new Sorpresa("Te hemos pillado transportando nesquik y Cola-Cao a la misma vez.", 9, TipoSorpresa.IRACASILLA));
         mazo.add(new Sorpresa("El 7 dicen que da suerte. Vamos a comprobarlo mandándote a esa casilla.", 7, TipoSorpresa.IRACASILLA));
         mazo.add(new Sorpresa("Pagar por el mantenimiento de tus propiedades.", -25, TipoSorpresa.PORCASAHOTEL));
