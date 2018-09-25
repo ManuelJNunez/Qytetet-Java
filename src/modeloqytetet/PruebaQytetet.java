@@ -58,31 +58,31 @@ public class PruebaQytetet {
     public static void main(String []args){
         PruebaQytetet prueba = new PruebaQytetet();
         
-        ArrayList<Sorpresa> mazo = juego.getMazo();
+        ArrayList<Sorpresa> filtrado = juego.getMazo();
         
-        for(Sorpresa s: mazo)
+        for(Sorpresa s: filtrado)
             System.out.println(s);
         
-        ArrayList<Sorpresa> mayoresquecero = prueba.ValorMayorQueCero();
+        filtrado = prueba.ValorMayorQueCero();
         
         System.out.println("\nCartas con valor mayor que 0:");
         
-        for(Sorpresa s: mayoresquecero)
+        for(Sorpresa s: filtrado)
             System.out.println(s);
         
-        ArrayList<Sorpresa> cartasira = prueba.CartasIrA();
+        filtrado = prueba.CartasIrA();
         
         System.out.println("\nCartas del tipo IrA:");
         
-        for(Sorpresa s: cartasira)
+        for(Sorpresa s: filtrado)
             System.out.println(s);
         
         System.out.println("");
         
         for(TipoSorpresa tipo: TipoSorpresa.values()){
             System.out.println("Sorpresas del tipo: " + tipo);
-            ArrayList<Sorpresa> sorpresas = prueba.FiltrarTipo(tipo);
-            for(Sorpresa s: sorpresas)
+            filtrado = prueba.FiltrarTipo(tipo);
+            for(Sorpresa s: filtrado)
                 System.out.println(s);
         }
     }
