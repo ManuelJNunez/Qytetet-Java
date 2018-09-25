@@ -6,7 +6,6 @@
 package modeloqytetet;
 
 import java.util.ArrayList;
-import java.util.Iterator;
 
 /**
  *
@@ -77,5 +76,14 @@ public class PruebaQytetet {
         
         for(Sorpresa s: cartasira)
             System.out.println(s);
+        
+        System.out.println("");
+        
+        for(TipoSorpresa tipo: TipoSorpresa.values()){
+            System.out.println("Sorpresas del tipo: " + tipo);
+            ArrayList<Sorpresa> sorpresas = prueba.FiltrarTipo(tipo);
+            for(Sorpresa s: sorpresas)
+                System.out.println(s);
+        }
     }
 }
