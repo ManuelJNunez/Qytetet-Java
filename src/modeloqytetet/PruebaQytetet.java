@@ -29,7 +29,7 @@ public class PruebaQytetet {
         
         return mayorquecero;
     }
-    
+    //HOLA//
     private ArrayList CartasIrA(){
         ArrayList<Sorpresa> mazo = juego.getMazo();
         ArrayList<Sorpresa> iracasilla = new ArrayList<>();
