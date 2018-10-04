@@ -29,7 +29,6 @@ public class PruebaQytetet {
         
         return mayorquecero;
     }
-    //HOLA//
     private ArrayList CartasIrA(){
         ArrayList<Sorpresa> mazo = juego.getMazo();
         ArrayList<Sorpresa> iracasilla = new ArrayList<>();
@@ -85,5 +84,7 @@ public class PruebaQytetet {
             for(Sorpresa s: filtrado)
                 System.out.println(s);
         }
+        juego.inicializarTablero();
+        System.out.println(juego.getTablero());
     }
 }

@@ -13,16 +13,26 @@ import java.util.ArrayList;
  */
 public class Qytetet {
     private ArrayList<Sorpresa> mazo = new ArrayList<>();
+    private Tablero tablero;
     
-    ArrayList getMazo(){
+    public Tablero getTablero(){
+    return this.tablero;
+    }
+    
+    public void inicializarTablero(){
+    this.tablero = new Tablero();
+    } 
+    
+    public ArrayList getMazo(){
         return mazo;
     }
     
     void inicializarCartasSorpresa(){
+        int i = tablero.getCarcel().getNumeroCasilla();
         mazo.add(new Sorpresa("El banco se ha equivocado en algunas cuentas y te devuelven dinero. Es que no estudian...", 250, TipoSorpresa.PAGARCOBRAR));
         mazo.add(new Sorpresa("Te han pillado tus cuentas en el extrangero.", -250, TipoSorpresa.PAGARCOBRAR));
         mazo.add(new Sorpresa("Tomas el tren que aún no ha llegado a Granada y llegas a la casilla 17.", 17, TipoSorpresa.IRACASILLA));
-        mazo.add(new Sorpresa("Te hemos pillado transportando nesquik y Cola-Cao a la misma vez.", 9, TipoSorpresa.IRACASILLA));
+        mazo.add(new Sorpresa("Te hemos pillado transportando nesquik y Cola-Cao a la misma vez.", tablero.getCarcel().getNumeroCasilla(), TipoSorpresa.IRACASILLA));
         mazo.add(new Sorpresa("El 7 dicen que da suerte. Vamos a comprobarlo mandándote a esa casilla.", 7, TipoSorpresa.IRACASILLA));
         mazo.add(new Sorpresa("Pagar por el mantenimiento de tus propiedades.", -25, TipoSorpresa.PORCASAHOTEL));
         mazo.add(new Sorpresa("Tus edificios son muy bonitos. Recibes un premio de arquitectura.", 25, TipoSorpresa.PORCASAHOTEL));
