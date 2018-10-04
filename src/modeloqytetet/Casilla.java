@@ -30,9 +30,7 @@ public class Casilla {
         this.coste = price;
     }
     
-    public int getNumeroCasilla(){ 
-        return numeroCasilla; 
-    }
+    public int getNumeroCasilla(){ return numeroCasilla; }
     
     public int getCoste() {return coste;}
     

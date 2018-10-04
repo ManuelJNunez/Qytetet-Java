@@ -15,6 +15,7 @@ public class PruebaQytetet {
     static Qytetet juego = new Qytetet();
     
     public PruebaQytetet(){
+        juego.inicializarTablero();
         juego.inicializarCartasSorpresa();
     }
     

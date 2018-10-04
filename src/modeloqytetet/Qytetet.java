@@ -28,7 +28,6 @@ public class Qytetet {
     }
     
     void inicializarCartasSorpresa(){
-        int i = tablero.getCarcel().getNumeroCasilla();
         mazo.add(new Sorpresa("El banco se ha equivocado en algunas cuentas y te devuelven dinero. Es que no estudian...", 250, TipoSorpresa.PAGARCOBRAR));
         mazo.add(new Sorpresa("Te han pillado tus cuentas en el extrangero.", -250, TipoSorpresa.PAGARCOBRAR));
         mazo.add(new Sorpresa("Tomas el tren que aún no ha llegado a Granada y llegas a la casilla 17.", 17, TipoSorpresa.IRACASILLA));
