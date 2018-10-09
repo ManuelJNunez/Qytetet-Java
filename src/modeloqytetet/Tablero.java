@@ -13,7 +13,18 @@ public class Tablero {
         
     }
     
-    public Casilla getCasilla(int i){return casillas.get(i);}
+    ArrayList getCasillas(){
+        return casillas;
+    }
+    
+    Casilla ObtenerCasillaNumero(int casilla){
+        if(casilla >= 0 && casilla <= 19)
+            return casillas.get(casilla);
+        else{
+            System.out.println("Has introducido un valor de casilla no válido.");
+            return null;
+        }
+    }
     
     public Casilla getCarcel () {return carcel;}
     
