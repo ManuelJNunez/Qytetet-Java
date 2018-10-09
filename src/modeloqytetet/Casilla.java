@@ -30,6 +30,11 @@ public class Casilla {
         this.coste = price;
     }
     
+    public Casilla(int numCasilla, TipoCasilla tipo){
+        this.numeroCasilla = numCasilla;
+        this.tipo = tipo;
+    }
+    
     TituloPropiedad asignarPropietario(Jugador jugador){
         throw new UnsupportedOperationException("Sin implementar");
     }
