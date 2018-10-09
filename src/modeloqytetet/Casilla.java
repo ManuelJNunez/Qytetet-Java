@@ -30,6 +30,10 @@ public class Casilla {
         this.coste = price;
     }
     
+    TituloPropiedad asignarPropietario(Jugador jugador){
+        throw new UnsupportedOperationException("Sin implementar");
+    }
+    
     public int getNumeroCasilla(){ return numeroCasilla; }
     
     public int getCoste() {return coste;}
@@ -38,14 +42,29 @@ public class Casilla {
     
     public TituloPropiedad getTitulo() {return titulo;}
     
+    int pagarAlquiler(){
+        throw new UnsupportedOperationException("Sin implementar");
+    }
+    
+    boolean propietarioEncarcelado(){
+        throw new UnsupportedOperationException("Sin implementar");
+    }
+    
     private void setTitulo(TituloPropiedad tp) 
     {
         this.titulo = tp;
     }
+    
+    boolean soyEdificable(){
+        throw new UnsupportedOperationException("Sin implementar");
+    }
+    
+    boolean tengoPropietario(){
+        throw new UnsupportedOperationException("Sin implementar");
+    }
+    
     @Override
     public String toString() {
         return "Numero de Casilla: " + numeroCasilla + " - Coste: " + coste + " - Tipo de Casilla: " + tipo + " - Titulo de Propiedad:\n " + titulo;
     }
-    
-    
 }
