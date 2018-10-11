@@ -26,8 +26,11 @@ public class Qytetet {
     private ArrayList<Sorpresa> mazo = new ArrayList<>();
     private Tablero tablero;
     
-    public Qytetet(){
+    private Qytetet(){
         inicializarTablero();
+    }
+    public static Qytetet getinstance(){
+        return instance;
     }
     
     public Tablero getTablero(){
