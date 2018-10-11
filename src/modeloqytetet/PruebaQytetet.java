@@ -15,9 +15,7 @@ import java.util.Scanner;
 public class PruebaQytetet {
     static Qytetet juego = new Qytetet();
     
-    public PruebaQytetet(){
-        juego.inicializarJuego(nombres);
-    }
+    public PruebaQytetet(){}
     
     private ArrayList ValorMayorQueCero(){
         ArrayList<Sorpresa> mazo = juego.getMazo();
@@ -60,8 +58,13 @@ public class PruebaQytetet {
         ArrayList<String> nombres = new ArrayList();        
         
         System.out.print("Introduce el numero de jugadores");
-        int s = sc.nextLine();
-
+        int n = sc.nextInt();
+        String s; 
+        for (int i = 0 ; i < n ; i++ ){
+            System.out.print("Nombre jugador " + i+1);
+            s = sc.nextLine();
+            nombres.add(s);
+        }
         return nombres;
     }
     
@@ -95,7 +98,6 @@ public class PruebaQytetet {
             for(Sorpresa s: filtrado)
                 System.out.println(s);
         }
-        juego.inicializarTablero();
         System.out.println(juego.getTablero());
     }
 }
