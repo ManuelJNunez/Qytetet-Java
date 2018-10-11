@@ -29,7 +29,7 @@ public class Qytetet {
     private Qytetet(){
         inicializarTablero();
     }
-    public static Qytetet getinstance(){
+    public static Qytetet getInstance(){
         return instance;
     }
     

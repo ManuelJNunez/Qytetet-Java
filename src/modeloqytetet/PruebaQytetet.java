@@ -13,7 +13,7 @@ import java.util.Scanner;
  * @author manu
  */
 public class PruebaQytetet {
-    static Qytetet juego = new Qytetet();
+    static Qytetet juego = Qytetet.getInstance();
     
     public PruebaQytetet(){}
     
