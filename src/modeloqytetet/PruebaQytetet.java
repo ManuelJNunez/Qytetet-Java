@@ -6,6 +6,7 @@
 package modeloqytetet;
 
 import java.util.ArrayList;
+import java.util.Scanner;
 
 /**
  *
@@ -15,8 +16,7 @@ public class PruebaQytetet {
     static Qytetet juego = new Qytetet();
     
     public PruebaQytetet(){
-        juego.inicializarTablero();
-        juego.inicializarCartasSorpresa();
+        juego.inicializarJuego(nombres);
     }
     
     private ArrayList ValorMayorQueCero(){
@@ -54,6 +54,16 @@ public class PruebaQytetet {
         return iracasilla;
     }
     
+    private static final Scanner sc = new Scanner (System.in);
+    
+    public ArrayList getNombreJugadores(){
+        ArrayList<String> nombres = new ArrayList();        
+        
+        System.out.print("Introduce el numero de jugadores");
+        int s = sc.nextLine();
+
+        return nombres;
+    }
     
     public static void main(String []args){
         PruebaQytetet prueba = new PruebaQytetet();

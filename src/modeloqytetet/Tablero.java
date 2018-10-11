@@ -68,6 +68,21 @@ public class Tablero {
         this.carcel = this.casillas.get(5);
     }
     
+    boolean esCasillaCarcel(int numeroCasilla){
+        if(numeroCasilla == this.carcel.getNumeroCasilla())
+            return true;
+        else 
+            return false;
+    }
+    
+    Casilla obtenerCasillaFinal(Casilla casilla, int desplazamiento){
+       throw new UnsupportedOperationException("Sin implementar");
+    }
+ 
+    Casilla obtenerCasillaNumero(int numeroCasilla){
+       throw new UnsupportedOperationException("Sin implementar");
+    }
+    
     @Override
     public String toString() {
         return "Casillas = " + casillas + ", carcel = " + carcel;

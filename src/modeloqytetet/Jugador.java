@@ -15,7 +15,8 @@ public class Jugador {
     private ArrayList<TituloPropiedad> propiedades;
     private Casilla CasillaActual;
     
-    public Jugador(){
+    public Jugador(String nombre){
+        this.nombre = nombre;
         encarcelado = false;
         saldo = 7500;
         cartaLibertad = null;

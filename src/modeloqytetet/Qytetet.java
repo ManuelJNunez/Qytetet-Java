@@ -12,6 +12,17 @@ import java.util.ArrayList;
  * @author manu
  */
 public class Qytetet {
+    private static final Qytetet instance = new Qytetet();
+    public int MAX_JUGADORES = 4;
+    int NUM_SORPRESA = 10;
+    public int NUM_CASILLAS = 20;
+    int PRECIO_LIBERTAR = 200;
+    int SALDO_SALIDA = 1000;
+    private Sorpresa cartaActual = null;
+    private Dado dado = null;
+    private Jugador jugadorActual = null;
+    private ArrayList<Jugador> jugadores = new ArrayList<>();
+    
     private ArrayList<Sorpresa> mazo = new ArrayList<>();
     private Tablero tablero;
     
@@ -19,15 +30,15 @@ public class Qytetet {
     return this.tablero;
     }
     
-    public void inicializarTablero(){
+    private void inicializarTablero(){
     this.tablero = new Tablero();
     } 
     
-    public ArrayList getMazo(){
+    ArrayList getMazo(){
         return mazo;
     }
     
-    void inicializarCartasSorpresa(){
+    private void inicializarCartasSorpresa(){
         mazo.add(new Sorpresa("El banco se ha equivocado en algunas cuentas y te devuelven dinero. Es que no estudian...", 250, TipoSorpresa.PAGARCOBRAR));
         mazo.add(new Sorpresa("Te han pillado tus cuentas en el extrangero.", -250, TipoSorpresa.PAGARCOBRAR));
         mazo.add(new Sorpresa("Tomas el tren que aún no ha llegado a Granada y llegas a la casilla 17.", 17, TipoSorpresa.IRACASILLA));
@@ -39,4 +50,113 @@ public class Qytetet {
         mazo.add(new Sorpresa("Parece ser que es tu cumpleaños o tal vez los estés engañando, maldito mentiroso, recibes dinero de los demás como regalo.", 200, TipoSorpresa.PORJUGADOR));
         mazo.add(new Sorpresa("Tienes contactos en el gobierno que logran sacarte de la cárcel.", 0, TipoSorpresa.SALIRCARCEL));
     }
+    
+    void actuarSiEnCasillaEdificable(){}
+    
+    void actuarSiEnCasillaNoEdificable(){}
+    
+    public void aplicarSorpresa(){}
+    
+    public boolean cancelarHipoteca(int numeroCasilla){
+        throw new UnsupportedOperationException("Sin implementar");
+    }
+    
+    public boolean comprarTituloPropiedad(){
+        throw new UnsupportedOperationException("Sin implementar");
+    }
+    
+    public boolean edificarCasa(int numneroCasilla){
+        throw new UnsupportedOperationException("Sin implementar");
+    }
+    
+    public boolean edificarHotel(){
+        throw new UnsupportedOperationException("Sin implementar");        
+    }
+    
+    private void encarcelarJugador(){
+    }
+    
+    public Sorpresa getCartaActual() {
+        return cartaActual;
+    }
+    
+    Dado getDado(){
+        return this.dado;
+    }
+    
+    Jugador getJugadorActual(){
+        return jugadorActual;
+    }
+    
+    public ArrayList getJugadores() {
+        return this.jugadores;
+    }
+    
+    public int getValorDado(){
+        return dado.getValor();
+    }
+    
+    public void hipotecarPropiedad(int numeroCasilla){
+        throw new UnsupportedOperationException("Sin implementar");        
+    }
+    
+    public void inicializarJuego(ArrayList <String> nombres){
+        inicializarJugadores(nombres);
+        inicializarTablero();
+        inicializarCartasSorpresa();
+        
+    }
+    
+    private void inicializarJugadores(ArrayList <String> nombres){
+        Jugador jugador_aux = null;
+        for (int i = 0 ; i < nombres.size(); i++){
+            jugador_aux = new Jugador(nombres.get(i));
+            jugadores.add(jugador_aux);
+        }
+    }
+    
+    public boolean intentarSalirCarcel(){
+        throw new UnsupportedOperationException("Sin implementar");
+    }
+    
+    public void jugar(){}
+    
+    void mover(int numCasillaDestino){}
+    
+    public Casilla obtenerCasillaJugadorActual(){
+        throw new UnsupportedOperationException("Sin implementar");
+    }
+    
+    public ArrayList obtenerCasillasTablero(){
+        throw new UnsupportedOperationException("Sin implementar");
+    }
+    
+    public ArrayList obtenerPropiedadesJugador(){
+        throw new UnsupportedOperationException("Sin implementar");
+    }
+    
+    public ArrayList obtenerPropiedadesJugadorSegunEstadoHipoteca(boolean estadoHipoteca){
+        throw new UnsupportedOperationException("Sin implementar");
+    }
+    
+    public void obtenerRanking(){}
+    
+    public int obtenerSaldoJugadorActual(){
+        throw new UnsupportedOperationException("Sin implementar");
+    }
+    
+    private void salidaJugadores(){}
+    
+    private void setCartaActual(Sorpresa cartaActual){}
+    
+    public void siguienteJugador(){}
+    
+    int tirarDado(){
+        throw new UnsupportedOperationException("Sin implementar");
+    }
+    
+    public boolean venderPropiedad(int numeroCasilla){
+        throw new UnsupportedOperationException("Sin implementar");
+    }
+    
 }

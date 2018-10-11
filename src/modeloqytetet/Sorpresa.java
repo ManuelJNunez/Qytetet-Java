@@ -10,18 +10,18 @@ package modeloqytetet;
  * @author manu
  */
 public class Sorpresa {
-    private String sorpresa;
+    private String texto;
     private TipoSorpresa tipo;
     private int valor;
     
     public Sorpresa(String texto, int valor, TipoSorpresa tipo){
-        sorpresa = texto;
+        this.texto = texto;
         this.tipo = tipo;
         this.valor = valor;
     }
     
     public String getSorpresa(){
-        return sorpresa;
+        return this.texto;
     }
     
     public TipoSorpresa getTipo(){
@@ -35,6 +35,6 @@ public class Sorpresa {
 
     @Override
     public String toString() {
-        return "Sorpresa{" + "texto=" + sorpresa + ", valor=" + Integer.toString(valor) + ", tipo=" + tipo + "}";
+        return "Sorpresa{" + "texto=" + this.texto + ", valor=" + Integer.toString(valor) + ", tipo=" + tipo + "}";
      } 
 }
