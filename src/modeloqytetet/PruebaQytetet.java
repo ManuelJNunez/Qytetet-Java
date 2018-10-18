@@ -59,17 +59,16 @@ public class PruebaQytetet {
         
         System.out.print("Introduce el numero de jugadores: ");
         int n = sc.nextInt();
-        if(n <= juego.MAX_JUGADORES){
+        if(n <= juego.MAX_JUGADORES && n >= 2){
             String s;
             s = sc.nextLine();
             for (int i = 0 ; i < n ; i++ ){
-                System.out.print("Nombre jugador " + i+1 + ": ");
+                System.out.print("Nombre jugador " + i + ": ");
                 s = sc.nextLine();
                 nombres.add(s);
             }
-            return nombres;
-        }else
-            return null;
+        }
+        return nombres;
     }
     
     public static void main(String []args){
