@@ -149,4 +149,15 @@ public class Jugador {
     boolean venderPropiedad(Casilla casilla){
         throw new UnsupportedOperationException("Sin implementar");
     }
+
+    @Override
+    public String toString(){
+        String texto = "\nNombre: " + nombre + "\nSaldo: " + saldo + "\nEncarcelado: " + encarcelado + "\nEstá en la casilla: " + CasillaActual + "\nCarta liberad: " + cartaLibertad + "\nPropiedades:\n";
+        
+        for(TituloPropiedad tp: propiedades){
+            texto += tp + "\n";
+        }
+        
+        return texto;
+    }
 }
