@@ -57,19 +57,28 @@ public class PruebaQytetet {
     public ArrayList getNombreJugadores(){
         ArrayList<String> nombres = new ArrayList();        
         
-        System.out.print("Introduce el numero de jugadores");
+        System.out.print("Introduce el numero de jugadores: ");
         int n = sc.nextInt();
-        String s; 
-        for (int i = 0 ; i < n ; i++ ){
-            System.out.print("Nombre jugador " + i+1);
+        if(n <= juego.MAX_JUGADORES){
+            String s;
             s = sc.nextLine();
-            nombres.add(s);
-        }
-        return nombres;
+            for (int i = 0 ; i < n ; i++ ){
+                System.out.print("Nombre jugador " + i+1 + ": ");
+                s = sc.nextLine();
+                nombres.add(s);
+            }
+            return nombres;
+        }else
+            return null;
     }
     
     public static void main(String []args){
         PruebaQytetet prueba = new PruebaQytetet();
+        ArrayList<String> nombres = prueba.getNombreJugadores();
+        
+        juego.inicializarJuego(nombres);
+        
+        System.out.println(juego.getJugadores());
         
         ArrayList<Sorpresa> filtrado = juego.getMazo();
         

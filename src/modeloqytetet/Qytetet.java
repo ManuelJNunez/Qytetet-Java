@@ -27,7 +27,6 @@ public class Qytetet {
     private Tablero tablero;
     
     private Qytetet(){
-        inicializarTablero();
     }
     public static Qytetet getInstance(){
         return instance;
