@@ -61,7 +61,7 @@ public class Jugador {
     }
     
     boolean cancelarHipoteca(TituloPropiedad tp){
-        double cantidadRecibida = tp.gethipotecaBase() + tp.getnumCasas()*0.5*tp.gethipotecaBase()+tp.getnumHoteles()*tp.gethipotecaBase();
+        double cantidadRecibida = tp.getHipotecaBase() + tp.getNumCasas()*0.5*tp.getHipotecaBase()+tp.getNumHoteles()*tp.getHipotecaBase();
         return saldo >= cantidadRecibida + cantidadRecibida * 0.1;
     }
     
@@ -83,7 +83,9 @@ public class Jugador {
     }
     
     Sorpresa devolverCartaLibertad(){
-        throw new UnsupportedOperationException("Sin implementar");
+        Sorpresa carta = cartaLibertad;
+        cartaLibertad = null;
+        return carta;
     }
     
     boolean edificarCasa(TituloPropiedad titulo){
@@ -99,11 +101,21 @@ public class Jugador {
     }
     
     private boolean esDeMiPropiedad(TituloPropiedad titulo){
-        throw new UnsupportedOperationException("Sin implementar");
+        boolean loes = false;
+        
+        for(TituloPropiedad tp: propiedades){
+            if(tp == titulo)
+                loes = true;
+        }
+        
+        return loes;
     }
     
     boolean estoyEnCalleLibre(){
-        throw new UnsupportedOperationException("Sin implementar");
+        if(this.CasillaActual.soyEdificable() && !this.CasillaActual.tengoPropietario())
+            return true;
+        else
+            return false;
     }
     
     boolean hipotecarPropiedad(TituloPropiedad titulo){
@@ -115,15 +127,33 @@ public class Jugador {
     }
     
     int modificarSaldo(int cantidad){
-        throw new UnsupportedOperationException("Sin implementar");
+        this.saldo += cantidad;
+        
+        return saldo;
     }
     
     int obtenerCapital(){
-        throw new UnsupportedOperationException("Sin implementar");
+        int capital = this.saldo;
+        
+        for(TituloPropiedad tp: propiedades){
+            capital += tp.getPrecioCompra() + (tp.getnumCasas() + tp.getNumHoteles()) * tp.getPrecioEdificar();
+            
+            if(tp.getHipotecada())
+                capital -= tp.getHipotecaBase();
+        }
+        
+        return capital;
     }
     
     ArrayList obtenerPropiedades(boolean hipotecada){
-        throw new UnsupportedOperationException("Sin implementar");
+        ArrayList<TituloPropiedad> devolver = new ArrayList<>();
+        
+        for(TituloPropiedad tp: propiedades){
+            if(tp.getHipotecada() == hipotecada)
+                 devolver.add(tp);
+        }
+        
+        return devolver;
     }
     
     void pagarAlquiler(){
@@ -131,7 +161,7 @@ public class Jugador {
     }
     
     void pagarImpuesto(){
-        throw new UnsupportedOperationException("Sin implementar");
+        saldo -= CasillaActual.getCoste();
     }
     
     void pagarLibertad(int cantidad){
@@ -139,11 +169,17 @@ public class Jugador {
     }
     
     boolean tengoCartaLibertad(){
-        throw new UnsupportedOperationException("Sin implementar");
+        if(cartaLibertad != null)
+            return true;
+        else
+            return false;
     }
     
-    private boolean tengoSalgo(int cantidad){
-        throw new UnsupportedOperationException("Sin implementar");
+    private boolean tengoSaldo(int cantidad){
+        if(saldo > cantidad)
+            return true;
+        else
+            return false;
     }
     
     boolean venderPropiedad(Casilla casilla){
@@ -152,7 +188,7 @@ public class Jugador {
 
     @Override
     public String toString(){
-        String texto = "\nNombre: " + nombre + "\nSaldo: " + saldo + "\nEncarcelado: " + encarcelado + "\nEstá en la casilla: " + CasillaActual + "\nCarta liberad: " + cartaLibertad + "\nPropiedades:\n";
+        String texto = "\nNombre: " + nombre + "\nSaldo: " + saldo + "\nCapital: " + this.obtenerCapital() + "\nEncarcelado: " + encarcelado + "\nEstá en la casilla: " + CasillaActual + "\nCarta liberad: " + cartaLibertad + "\nPropiedades:\n";
         
         for(TituloPropiedad tp: propiedades){
             texto += tp + "\n";

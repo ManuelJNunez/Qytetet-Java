@@ -20,9 +20,12 @@ public class Dado {
         return instance;
     }
     
-    private int tirar(){
-        throw new UnsupportedOperationException("Sin implementar");
+    int tirar(){
+        valor = (int) Math.floor(Math.random()*6+1);
+        return valor;
     }
     
-    public int getValor(){return valor;}
+    public int getValor(){
+        return valor;
+    }
 }

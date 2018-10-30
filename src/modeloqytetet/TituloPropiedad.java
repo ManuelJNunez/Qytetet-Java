@@ -30,15 +30,11 @@ public class TituloPropiedad {
     
     public String getnombre(){ return nombre; }
     
-    public boolean gethipotecada(){ return hipotecada; }
-    
     public int getprecioCompra(){ return precioCompra; }
     
     public int getalquilerBase() { return alquilerBase; }
     
     public float getfactorRevalorizacion() {return factorRevalorizacion; }
-    
-    public int gethipotecaBase() {return hipotecaBase; }
     
     public int getprecioEdificar() {return precioEdificar; }
     
@@ -95,11 +91,11 @@ public class TituloPropiedad {
     }
     
     int getHipotecaBase(){
-        throw new UnsupportedOperationException("Sin implementar");
+        return hipotecaBase;
     }
     
     boolean getHipotecada(){
-        throw new UnsupportedOperationException("Sin implementar");
+        return hipotecada;
     }
     
     String getNombre(){
@@ -131,7 +127,7 @@ public class TituloPropiedad {
     }
     
     boolean propietarioEncarcelado(){
-        throw new UnsupportedOperationException("Sin implementar");
+        return propietario.getEncarcelado();
     }
     
     boolean setHipotecada(boolean hipotecada){
@@ -139,7 +135,7 @@ public class TituloPropiedad {
     }
     
     boolean tengoPropietario(){
-        throw new UnsupportedOperationException("Sin implementar");
+        return propietario != null;
     }
 
     @Override
