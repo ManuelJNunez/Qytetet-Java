@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package modeloqytetet;
 
 import java.util.ArrayList;
@@ -19,12 +14,13 @@ public class Qytetet {
     int PRECIO_LIBERTAR = 200;
     int SALDO_SALIDA = 1000;
     private Sorpresa cartaActual = null;
-    private Dado dado = null;
-    private Jugador jugadorActual = null;
+    private Dado dado = Dado.getInstance();
     private ArrayList<Jugador> jugadores = new ArrayList<>();
-    
+    private EstadoJuego estado;
     private ArrayList<Sorpresa> mazo = new ArrayList<>();
     private Tablero tablero;
+    private int iterador = 0;
+    private Jugador jugadorActual = jugadores.get(0);
     
     private Qytetet(){
     }
@@ -125,9 +121,14 @@ public class Qytetet {
         throw new UnsupportedOperationException("Sin implementar");
     }
     
-    public void jugar(){}
+    public void jugar(){
+        Casilla casillafinal = tablero.obtenerCasillaFinal(jugadores.get(iterador).getCasillaActual(), this.tirarDado());
+        mover(casillafinal.getNumeroCasilla());
+    }
     
-    void mover(int numCasillaDestino){}
+    void mover(int numCasillaDestino){
+        
+    }
     
     public Casilla obtenerCasillaJugadorActual(){
         throw new UnsupportedOperationException("Sin implementar");
@@ -138,31 +139,75 @@ public class Qytetet {
     }
     
     public ArrayList obtenerPropiedadesJugador(){
-        throw new UnsupportedOperationException("Sin implementar");
+        ArrayList<Integer> propiedades = new ArrayList<>();
+        ArrayList<TituloPropiedad> prop = jugadorActual.getPropiedades();
+        ArrayList<Casilla> casillas = tablero.getCasillas();
+        
+        
+        for(int i = 0; i < prop.size(); ++i){
+            for(int j = 0; j < casillas.size(); ++j){
+                if(prop.get(i) == casillas.get(j).getTitulo())
+                    propiedades.add(j);
+            }
+        }
+        
+        return propiedades;
     }
     
     public ArrayList obtenerPropiedadesJugadorSegunEstadoHipoteca(boolean estadoHipoteca){
-        throw new UnsupportedOperationException("Sin implementar");
+        ArrayList<Integer> propiedades = new ArrayList<>();
+        ArrayList<TituloPropiedad> prop = jugadorActual.obtenerPropiedades(estadoHipoteca);
+        ArrayList<Casilla> casillas = tablero.getCasillas();
+        
+        
+        for(int i = 0; i < prop.size(); ++i){
+            for(int j = 0; j < casillas.size(); ++j){
+                if(prop.get(i) == casillas.get(j).getTitulo())
+                    propiedades.add(j);
+            }
+        }
+        
+        return propiedades;
     }
     
     public void obtenerRanking(){}
     
     public int obtenerSaldoJugadorActual(){
-        throw new UnsupportedOperationException("Sin implementar");
+        return jugadores.get(iterador).getSaldo();
     }
     
-    private void salidaJugadores(){}
+    private void salidaJugadores(){
+        estado = EstadoJuego.JA_PREPARADO;
+        for(int i = 0; i < jugadores.size(); ++i)
+            jugadores.get(i).setCasillaActual(tablero.ObtenerCasillaNumero(0));
+    }
     
     private void setCartaActual(Sorpresa cartaActual){}
     
-    public void siguienteJugador(){}
+    public void siguienteJugador(){
+        iterador++;
+        
+        iterador = iterador%4;
+        
+        if(jugadores.get(iterador).getEncarcelado())
+            estado = EstadoJuego.JA_ENCARCELADOCONOPCIONDELIBERTAD;
+        else
+            estado = EstadoJuego.JA_PREPARADO;
+    }
     
     int tirarDado(){
-        throw new UnsupportedOperationException("Sin implementar");
+        return dado.tirar();
     }
     
     public boolean venderPropiedad(int numeroCasilla){
         throw new UnsupportedOperationException("Sin implementar");
     }
     
+    public boolean jugadorActualEnCalleLibre(){
+        return jugadorActual.estoyEnCalleLibre();
+    }
+    
+    public boolean jugadorActualEncarcelado(){
+        return jugadorActual.getEncarcelado();
+    }    
 }
