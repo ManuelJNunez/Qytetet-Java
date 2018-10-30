@@ -17,15 +17,6 @@ public class Tablero {
         return casillas;
     }
     
-    Casilla ObtenerCasillaNumero(int casilla){
-        if(casilla >= 0 && casilla <= 19)
-            return casillas.get(casilla);
-        else{
-            System.out.println("Has introducido un valor de casilla no válido.");
-            return null;
-        }
-    }
-    
     public Casilla getCarcel () {return carcel;}
     
     private void inicializar(){
@@ -76,11 +67,19 @@ public class Tablero {
     }
     
     Casilla obtenerCasillaFinal(Casilla casilla, int desplazamiento){
-       throw new UnsupportedOperationException("Sin implementar");
+       int obtener = casilla.getNumeroCasilla() + desplazamiento;
+       
+       if(obtener > 19)
+           obtener = obtener % 20;
+       
+       return casillas.get(obtener);
     }
- 
-    Casilla obtenerCasillaNumero(int numeroCasilla){
-       throw new UnsupportedOperationException("Sin implementar");
+    
+     Casilla ObtenerCasillaNumero(int casilla){
+        if(casilla >= 0 && casilla <= 19)
+            return casillas.get(casilla);
+        else
+            return null;
     }
     
     @Override
