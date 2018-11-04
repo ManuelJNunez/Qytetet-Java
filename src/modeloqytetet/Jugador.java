@@ -66,14 +66,14 @@ public class Jugador {
     }
     
     boolean comprarTituloPropiedad(){
-        return CasillaActual.getTitulo().getPropietario() != null && saldo >= CasillaActual.getTitulo().getprecioCompra();
+        return CasillaActual.getTitulo().getPropietario() != null && saldo >= CasillaActual.getTitulo().getPrecioCompra();
     }
     
     int CuantasCasasHotelesTengo(){
         int ncasahoteles = 0;
         
         for(TituloPropiedad tp: propiedades)
-            ncasahoteles += tp.getnumCasas() + tp.getnumHoteles();
+            ncasahoteles += tp.getNumCasas() + tp.getNumHoteles();
         
         return ncasahoteles;
     }
@@ -89,7 +89,17 @@ public class Jugador {
     }
     
     boolean edificarCasa(TituloPropiedad titulo){
-        throw new UnsupportedOperationException("Sin implementar");
+        boolean edificada = false;
+        int numCasas = titulo.getNumCasas();
+        if(numCasas <4){
+            int costeEdificarCasa = titulo.getPrecioEdificar();
+            if(this.tengoSaldo(costeEdificarCasa)){
+                titulo.edificarCasa();
+                this.modificarSaldo(-costeEdificarCasa);
+                edificada = true;
+            }
+        }
+        return edificada;
     }
     
     boolean edificarHotel(TituloPropiedad titulo){
@@ -137,7 +147,7 @@ public class Jugador {
         int capital = this.saldo;
         
         for(TituloPropiedad tp: propiedades){
-            capital += tp.getPrecioCompra() + (tp.getnumCasas() + tp.getNumHoteles()) * tp.getPrecioEdificar();
+            capital += tp.getPrecioCompra() + (tp.getNumCasas() + tp.getNumHoteles()) * tp.getPrecioEdificar();
             
             if(tp.getHipotecada())
                 capital -= tp.getHipotecaBase();

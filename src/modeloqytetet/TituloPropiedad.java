@@ -30,17 +30,17 @@ public class TituloPropiedad {
     
     public String getnombre(){ return nombre; }
     
-    public int getprecioCompra(){ return precioCompra; }
+    public int getPrecioCompra(){ return precioCompra; }
     
-    public int getalquilerBase() { return alquilerBase; }
+    public int getAlquilerBase() { return alquilerBase; }
     
-    public float getfactorRevalorizacion() {return factorRevalorizacion; }
+    public float getFactorRevalorizacion() {return factorRevalorizacion; }
     
-    public int getprecioEdificar() {return precioEdificar; }
+    public int getPrecioEdificar() {return precioEdificar; }
     
-    public int getnumHoteles() {return numHoteles; }
+    public int getNumHoteles() {return numHoteles; }
     
-    public int getnumCasas() {return numCasas; }
+    public int getNumCasas() {return numCasas; }
     
     Jugador getPropietario(){
         return propietario;
@@ -75,18 +75,10 @@ public class TituloPropiedad {
     }
     
     void edificarCasa(){
-        throw new UnsupportedOperationException("Sin implementar");
+        numCasas += 1;
     }
     
     void edificarHotel(){
-        throw new UnsupportedOperationException("Sin implementar");
-    }
-    
-    int getAlquilerBase(){
-        throw new UnsupportedOperationException("Sin implementar");
-    }
-    
-    float getFactorRevalorizacion(){
         throw new UnsupportedOperationException("Sin implementar");
     }
     
@@ -96,26 +88,6 @@ public class TituloPropiedad {
     
     boolean getHipotecada(){
         return hipotecada;
-    }
-    
-    String getNombre(){
-        throw new UnsupportedOperationException("Sin implementar");
-    }
-    
-    int getNumCasas(){
-        throw new UnsupportedOperationException("Sin implementar");
-    }
-    
-    int getNumHoteles(){
-        throw new UnsupportedOperationException("Sin implementar");
-    }
-    
-    int getPrecioCompra(){
-        throw new UnsupportedOperationException("Sin implementar");
-    }
-    
-    int getPrecioEdificar(){
-        throw new UnsupportedOperationException("Sin implementar");
     }
     
     int hipotecar(){

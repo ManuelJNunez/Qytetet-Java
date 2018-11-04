@@ -1,6 +1,8 @@
 package modeloqytetet;
 
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Random;
 
 /**
  *
@@ -20,7 +22,7 @@ public class Qytetet {
     private ArrayList<Sorpresa> mazo = new ArrayList<>();
     private Tablero tablero;
     private int iterador = 0;
-    private Jugador jugadorActual = jugadores.get(0);
+    private Jugador jugadorActual = null;
     
     private Qytetet(){
     }
@@ -51,6 +53,8 @@ public class Qytetet {
         mazo.add(new Sorpresa("Los demás se enteran de que tienes cuentas en el extrangero. Mejor sobornarlos para que no hablen, ¿no?", -200, TipoSorpresa.PORJUGADOR));
         mazo.add(new Sorpresa("Parece ser que es tu cumpleaños o tal vez los estés engañando, maldito mentiroso, recibes dinero de los demás como regalo.", 200, TipoSorpresa.PORJUGADOR));
         mazo.add(new Sorpresa("Tienes contactos en el gobierno que logran sacarte de la cárcel.", 0, TipoSorpresa.SALIRCARCEL));
+        Random rndm = new Random();  
+        Collections.shuffle(mazo, rndm);
     }
 
     void actuarSiEnCasillaEdificable(){
@@ -135,8 +139,15 @@ public class Qytetet {
         throw new UnsupportedOperationException("Sin implementar");
     }
     
-    public boolean edificarCasa(int numneroCasilla){
-        throw new UnsupportedOperationException("Sin implementar");
+    public boolean edificarCasa(int numeroCasilla){
+        boolean edificada;
+        Casilla casilla = tablero.ObtenerCasillaNumero(numeroCasilla);
+        TituloPropiedad titulo = casilla.getTitulo();
+        edificada = jugadorActual.edificarCasa(titulo);
+        if (edificada){
+            estado = EstadoJuego.JA_PUEDEGESTIONAR;
+        }
+        return edificada;
     }
     
     public boolean edificarHotel(){
@@ -184,6 +195,7 @@ public class Qytetet {
         inicializarJugadores(nombres);
         inicializarTablero();
         inicializarCartasSorpresa();
+        salidaJugadores();
         
     }
     
@@ -275,9 +287,13 @@ public class Qytetet {
     }
     
     private void salidaJugadores(){
-        estado = EstadoJuego.JA_PREPARADO;
+        int turno;
         for(int i = 0; i < jugadores.size(); ++i)
             jugadores.get(i).setCasillaActual(tablero.ObtenerCasillaNumero(0));
+        Random rndm = new Random();         
+        turno = rndm.nextInt(jugadores.size());
+        jugadorActual = jugadores.get(turno);
+        estado = EstadoJuego.JA_PREPARADO;
     }
     
     private void setCartaActual(Sorpresa cartaActual){}

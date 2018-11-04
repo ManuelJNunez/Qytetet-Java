@@ -7,7 +7,7 @@ package modeloqytetet;
 
 import java.util.ArrayList;
 import java.util.Scanner;
-
+import java.util.Random;
 /**
  *
  * @author manu
@@ -73,6 +73,7 @@ public class PruebaQytetet {
     
     public static void main(String []args){
         PruebaQytetet prueba = new PruebaQytetet();
+
         ArrayList<String> nombres = prueba.getNombreJugadores();
         
         juego.inicializarJuego(nombres);
@@ -107,5 +108,6 @@ public class PruebaQytetet {
                 System.out.println(s);
         }
         System.out.println(juego.getTablero());
+        
     }
 }

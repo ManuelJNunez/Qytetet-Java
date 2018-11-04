@@ -17,7 +17,7 @@ public class Casilla {
         this.numeroCasilla = numCasilla;
         this.tipo = TipoCasilla.CALLE;
         setTitulo(tp);
-        this.coste = titulo.getprecioCompra();
+        this.coste = titulo.getPrecioCompra();
     
     }
    
