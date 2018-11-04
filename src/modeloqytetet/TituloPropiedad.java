@@ -92,7 +92,9 @@ public class TituloPropiedad {
     }
     
     int hipotecar(){
-        throw new UnsupportedOperationException("Sin implementar");
+        this.hipotecada = true;
+        int costeHipoteca = this.calcularCosteHipotecar();
+        return costeHipoteca;
     }
     
     int pagarAlquiler(){

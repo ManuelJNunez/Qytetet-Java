@@ -188,7 +188,10 @@ public class Qytetet {
     }
     
     public void hipotecarPropiedad(int numeroCasilla){
-        throw new UnsupportedOperationException("Sin implementar");        
+        Casilla casilla = tablero.ObtenerCasillaNumero(numeroCasilla);
+        TituloPropiedad titulo = casilla.getTitulo();
+        jugadorActual.hipotecarPropiedad(titulo);
+
     }
     
     public void inicializarJuego(ArrayList <String> nombres){

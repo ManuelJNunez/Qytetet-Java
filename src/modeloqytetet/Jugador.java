@@ -143,7 +143,9 @@ public class Jugador {
     }
     
     boolean hipotecarPropiedad(TituloPropiedad titulo){
-        throw new UnsupportedOperationException("Sin implementar");
+        int costeHipoteca = titulo.hipotecar();
+        this.modificarSaldo(costeHipoteca);
+        return true; //??
     }
     
     void irACarcel(Casilla casilla){
