@@ -168,7 +168,8 @@ public class Jugador {
     }
     
     void pagarAlquiler(){
-        throw new UnsupportedOperationException("Sin implementar");
+        int costeAlquiler = this.CasillaActual.pagarAlquiler();
+        this.modificarSaldo(-costeAlquiler);
     }
     
     void pagarImpuesto(){
