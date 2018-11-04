@@ -70,7 +70,18 @@ public class Qytetet {
     }
     
     void actuarSiEnCasillaNoEdificable(){
-    
+        estado = EstadoJuego.JA_PUEDEGESTIONAR;
+        Casilla casillaActual = jugadorActual.getCasillaActual();
+        if(casillaActual.getTipo()==TipoCasilla.IMPUESTO){
+            jugadorActual.pagarImpuesto();
+        }
+        else if (casillaActual.getTipo() == TipoCasilla.JUEZ){
+            encarcelarJugador();
+        }
+        else if (casillaActual.getTipo() == TipoCasilla.SORPRESA){
+            cartaActual = null;
+            estado = EstadoJuego.JA_CONSORPRESA;
+        }
     
     
     }
