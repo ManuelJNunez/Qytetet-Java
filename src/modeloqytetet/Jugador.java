@@ -79,7 +79,21 @@ public class Jugador {
     }
     
     boolean DeboPagarAlquiler(){
-        throw new UnsupportedOperationException("Sin implementar");
+        TituloPropiedad titulo = this.CasillaActual.getTitulo();
+        boolean esDeMiPropiedad = this.esDeMiPropiedad(titulo);
+        boolean tienePropietario = false;
+        boolean encarcelado = true;
+        boolean estaHipotecada = true;
+        boolean deboPagar;
+        if(!esDeMiPropiedad){
+            tienePropietario = titulo.tengoPropietario();
+            if(tienePropietario){
+                encarcelado = titulo.propietarioEncarcelado();
+                estaHipotecada = titulo.getHipotecada();
+            }
+        }
+        deboPagar = !esDeMiPropiedad & tienePropietario &!encarcelado & !estaHipotecada;
+        return deboPagar;
     }
     
     Sorpresa devolverCartaLibertad(){
