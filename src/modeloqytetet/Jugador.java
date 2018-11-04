@@ -123,7 +123,8 @@ public class Jugador {
     }
     
     void irACarcel(Casilla casilla){
-        throw new UnsupportedOperationException("Sin implementar");
+        this.setCasillaActual(casilla);
+        this.setEncarcelado(true);
     }
     
     int modificarSaldo(int cantidad){
@@ -165,7 +166,11 @@ public class Jugador {
     }
     
     void pagarLibertad(int cantidad){
-        throw new UnsupportedOperationException("Sin implementar");
+        boolean tengoSaldo = tengoSaldo(cantidad);
+        if(tengoSaldo){
+            this.setEncarcelado(false);
+            this.modificarSaldo(-cantidad);
+        }
     }
     
     boolean tengoCartaLibertad(){

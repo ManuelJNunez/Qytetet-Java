@@ -11,7 +11,7 @@ public class Qytetet {
     public int MAX_JUGADORES = 4;
     int NUM_SORPRESA = 10;
     public int NUM_CASILLAS = 20;
-    int PRECIO_LIBERTAR = 200;
+    int PRECIO_LIBERTAD = 200;
     int SALDO_SALIDA = 1000;
     private Sorpresa cartaActual = null;
     private Dado dado = Dado.getInstance();
@@ -86,7 +86,46 @@ public class Qytetet {
     
     }
     
-    public void aplicarSorpresa(){}
+    public void aplicarSorpresa(){
+        estado = EstadoJuego.JA_PUEDEGESTIONAR;
+        TipoSorpresa tipo = cartaActual.getTipo();
+        if(tipo == TipoSorpresa.SALIRCARCEL)
+            jugadorActual.setCartaLibertad(cartaActual);
+        else 
+            mazo.add(cartaActual);
+        
+        if(tipo == TipoSorpresa.PAGARCOBRAR){
+            jugadorActual.modificarSaldo(cartaActual.getValor());
+            if(jugadorActual.getSaldo()<0)
+                estado = EstadoJuego.ALGUNJUGADORENBANCARROTA;
+        }
+        else if (tipo == TipoSorpresa.IRACASILLA){
+            int valor = cartaActual.getValor();
+            boolean casillaCarcel = tablero.esCasillaCarcel(valor);
+            if(casillaCarcel)
+                encarcelarJugador();
+            else
+                mover(valor);
+        } else if(tipo == TipoSorpresa.PORCASAHOTEL){
+            int cantidad = cartaActual.getValor();
+            int numeroTotal = jugadorActual.CuantasCasasHotelesTengo();
+            jugadorActual.modificarSaldo(cantidad*numeroTotal);
+            if(jugadorActual.getSaldo()<0)
+                estado = EstadoJuego.ALGUNJUGADORENBANCARROTA;
+        } else if(tipo == TipoSorpresa.PORJUGADOR){
+            for(int i = 0; i<=MAX_JUGADORES; i++){
+               Jugador jugador = jugadores.get((iterador+1)%jugadores.size());
+               if(jugador != jugadorActual){
+                   jugador.modificarSaldo(cartaActual.getValor());
+                   if(jugador.getSaldo() == 0)
+                       estado = EstadoJuego.ALGUNJUGADORENBANCARROTA;
+               }
+               jugadorActual.modificarSaldo(-cartaActual.getValor());
+              if(jugadorActual.getSaldo()<0)
+                  estado = EstadoJuego.ALGUNJUGADORENBANCARROTA;
+            }
+        }
+    }
     
     public boolean cancelarHipoteca(int numeroCasilla){
         throw new UnsupportedOperationException("Sin implementar");
@@ -105,6 +144,16 @@ public class Qytetet {
     }
     
     private void encarcelarJugador(){
+        Casilla casillaCarcel = tablero.getCarcel();
+        if(jugadorActual.tengoCartaLibertad() == false){
+            jugadorActual.irACarcel(casillaCarcel);
+            estado = EstadoJuego.JA_ENCARCELADO;
+        }
+        else{
+            Sorpresa carta = jugadorActual.devolverCartaLibertad();
+            mazo.add(carta);
+            estado = EstadoJuego.JA_PUEDEGESTIONAR;
+        }
     }
     
     public Sorpresa getCartaActual() {
@@ -146,8 +195,20 @@ public class Qytetet {
         }
     }
     
-    public boolean intentarSalirCarcel(){
-        throw new UnsupportedOperationException("Sin implementar");
+    public boolean intentarSalirCarcel(MetodoSalirCarcel metodo){
+        int resultado = tirarDado();
+        if(metodo == MetodoSalirCarcel.TIRANDODADO){
+            if(resultado >= 5)
+                jugadorActual.setEncarcelado(false);
+        }else if(metodo == MetodoSalirCarcel.PAGANDOLIBERTAD){
+            jugadorActual.pagarLibertad(PRECIO_LIBERTAD);
+        }
+        boolean libre = jugadorActual.getEncarcelado();
+        if(libre)
+            estado = EstadoJuego.JA_PREPARADO;
+        else
+            estado = EstadoJuego.JA_ENCARCELADO;
+        return libre;
     }
     
     public void jugar(){
@@ -156,7 +217,15 @@ public class Qytetet {
     }
     
     void mover(int numCasillaDestino){
-        
+        Casilla casillaInicial = jugadorActual.getCasillaActual();
+        Casilla casillaFinal = tablero.ObtenerCasillaNumero(numCasillaDestino);
+        jugadorActual.setCasillaActual(casillaFinal);
+        if(numCasillaDestino < casillaInicial.getNumeroCasilla())
+            jugadorActual.modificarSaldo(SALDO_SALIDA);
+        if(casillaFinal.soyEdificable()){
+            this.actuarSiEnCasillaEdificable();
+        }else
+            this.actuarSiEnCasillaNoEdificable();
     }
     
     public Casilla obtenerCasillaJugadorActual(){
