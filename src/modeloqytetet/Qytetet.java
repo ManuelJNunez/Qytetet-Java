@@ -52,10 +52,28 @@ public class Qytetet {
         mazo.add(new Sorpresa("Parece ser que es tu cumpleaños o tal vez los estés engañando, maldito mentiroso, recibes dinero de los demás como regalo.", 200, TipoSorpresa.PORJUGADOR));
         mazo.add(new Sorpresa("Tienes contactos en el gobierno que logran sacarte de la cárcel.", 0, TipoSorpresa.SALIRCARCEL));
     }
+
+    void actuarSiEnCasillaEdificable(){
+        boolean deboPagar = jugadorActual.DeboPagarAlquiler();
+        if(deboPagar){
+            jugadorActual.pagarAlquiler();
+        }
+        Casilla casilla = obtenerCasillaJugadorActual();
+        boolean tengoPropietario = casilla.tengoPropietario();
+        if (tengoPropietario){
+            estado = EstadoJuego.JA_PUEDEGESTIONAR;
+        }
+        else{
+            estado = EstadoJuego.JA_PUEDECOMPRAROGESTIONAR;
+        }
+        
+    }
     
-    void actuarSiEnCasillaEdificable(){}
+    void actuarSiEnCasillaNoEdificable(){
     
-    void actuarSiEnCasillaNoEdificable(){}
+    
+    
+    }
     
     public void aplicarSorpresa(){}
     
@@ -187,7 +205,7 @@ public class Qytetet {
     public void siguienteJugador(){
         iterador++;
         
-        iterador = iterador%4;
+        iterador = iterador%jugadores.size();
         
         if(jugadores.get(iterador).getEncarcelado())
             estado = EstadoJuego.JA_ENCARCELADOCONOPCIONDELIBERTAD;
