@@ -64,7 +64,7 @@ public class Casilla {
         return titulo.propietarioEncarcelado();
     }
     
-    private void setTitulo(TituloPropiedad tp) 
+    public void setTitulo(TituloPropiedad tp) 
     {
         this.titulo = tp;
     }

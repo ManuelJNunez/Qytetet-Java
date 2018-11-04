@@ -64,7 +64,9 @@ public class TituloPropiedad {
     }
     
     int calcularPrecioVenta(){
-        throw new UnsupportedOperationException("Sin implementar");
+        int precioVenta;
+        precioVenta =(int) (precioCompra + (numCasas + numHoteles) * precioEdificar * factorRevalorizacion);
+        return precioVenta;
     }
     
     void cancelarHipoteca(){

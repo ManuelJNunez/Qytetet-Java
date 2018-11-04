@@ -317,7 +317,10 @@ public class Qytetet {
     }
     
     public boolean venderPropiedad(int numeroCasilla){
-        throw new UnsupportedOperationException("Sin implementar");
+        Casilla casilla = tablero.ObtenerCasillaNumero(numeroCasilla);
+        jugadorActual.venderPropiedad(casilla);
+        estado = EstadoJuego.JA_PUEDEGESTIONAR;
+        return true;
     }
     
     public boolean jugadorActualEnCalleLibre(){

@@ -121,7 +121,8 @@ public class Jugador {
     }
     
     private void eliminarDeMisPropiedades(TituloPropiedad titulo){
-        throw new UnsupportedOperationException("Sin implementar");
+        this.propiedades.remove(titulo);
+        titulo.setPropietario(null);
     }
     
     private boolean esDeMiPropiedad(TituloPropiedad titulo){
@@ -215,7 +216,12 @@ public class Jugador {
     }
     
     boolean venderPropiedad(Casilla casilla){
-        throw new UnsupportedOperationException("Sin implementar");
+        TituloPropiedad titulo = casilla.getTitulo();
+        this.eliminarDeMisPropiedades(titulo);
+        int precioVenta = titulo.calcularPrecioVenta();
+        this.modificarSaldo(precioVenta);
+        casilla.setTitulo(null);
+        return true;
     }
 
     @Override
