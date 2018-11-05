@@ -136,7 +136,11 @@ public class Qytetet {
     }
     
     public boolean comprarTituloPropiedad(){
-        throw new UnsupportedOperationException("Sin implementar");
+        boolean comprado = jugadorActual.comprarTituloPropiedad();
+        if(comprado){
+            estado = EstadoJuego.JA_PUEDEGESTIONAR;
+        }
+        return comprado;
     }
     
     public boolean edificarCasa(int numeroCasilla){

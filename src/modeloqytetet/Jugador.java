@@ -66,7 +66,15 @@ public class Jugador {
     }
     
     boolean comprarTituloPropiedad(){
-        return CasillaActual.getTitulo().getPropietario() != null && saldo >= CasillaActual.getTitulo().getPrecioCompra();
+        boolean comprado = false;
+        int costeCompra = this.CasillaActual.getCoste();
+        if(costeCompra < this.saldo){
+            TituloPropiedad titulo = this.CasillaActual.asignarPropietario(this);
+            comprado = true;
+            this.propiedades.add(titulo);
+            this.modificarSaldo(-costeCompra);
+        }
+        return comprado;
     }
     
     int CuantasCasasHotelesTengo(){
