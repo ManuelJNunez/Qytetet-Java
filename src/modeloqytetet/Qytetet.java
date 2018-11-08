@@ -309,6 +309,7 @@ public class Qytetet {
         iterador++;
         
         iterador = iterador%jugadores.size();
+        jugadorActual = jugadores.get(iterador);
         
         if(jugadores.get(iterador).getEncarcelado())
             estado = EstadoJuego.JA_ENCARCELADOCONOPCIONDELIBERTAD;
