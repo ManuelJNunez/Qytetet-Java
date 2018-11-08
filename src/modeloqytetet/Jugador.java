@@ -60,9 +60,18 @@ public class Jugador {
         this.encarcelado = encarcelado;
     }
     
-    boolean cancelarHipoteca(TituloPropiedad tp){
-        double cantidadRecibida = tp.getHipotecaBase() + tp.getNumCasas()*0.5*tp.getHipotecaBase()+tp.getNumHoteles()*tp.getHipotecaBase();
-        return saldo >= cantidadRecibida + cantidadRecibida * 0.1;
+    boolean cancelarHipoteca(TituloPropiedad tp){        
+        boolean cancelar = false;
+        int costeCancelar = tp.calcularCosteCancelar();
+        boolean tengoSaldo = tengoSaldo(costeCancelar);
+        boolean esDeMiPropiedad = esDeMiPropiedad(tp);
+      
+        if(tengoSaldo && esDeMiPropiedad){
+            tp.cancelarHipoteca();
+            cancelar = true;
+        }
+                    
+        return cancelar;
     }
     
     boolean comprarTituloPropiedad(){
@@ -125,7 +134,21 @@ public class Jugador {
     }
     
     boolean edificarHotel(TituloPropiedad titulo){
-        throw new UnsupportedOperationException("Sin implementar");
+        boolean edificado = false;
+        int numCasas = titulo.getNumCasas(), numHoteles = titulo.getNumHoteles();
+        
+        if(numHoteles < 4 && numCasas == 4){
+            int costeEdificarHotel = titulo.getPrecioEdificar();
+            boolean tengoSaldo = this.tengoSaldo(costeEdificarHotel);
+            
+            if(tengoSaldo){
+                titulo.edificarHotel();
+                this.modificarSaldo(-costeEdificarHotel);
+                edificado = true;
+            }
+        }
+        
+        return edificado;
     }
     
     private void eliminarDeMisPropiedades(TituloPropiedad titulo){

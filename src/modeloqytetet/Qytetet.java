@@ -132,7 +132,18 @@ public class Qytetet {
     }
     
     public boolean cancelarHipoteca(int numeroCasilla){
-        throw new UnsupportedOperationException("Sin implementar");
+        Casilla casilla = obtenerCasillaJugadorActual();
+        boolean esEdificable = casilla.soyEdificable();
+        TituloPropiedad titulo = casilla.getTitulo();
+        boolean hipotecada = titulo.getHipotecada();
+        boolean cancelar = false;
+
+        if (esEdificable && hipotecada)
+            cancelar = jugadorActual.cancelarHipoteca(titulo);
+      
+        estado = EstadoJuego.JA_PUEDEGESTIONAR;
+      
+        return cancelar;
     }
     
     public boolean comprarTituloPropiedad(){
@@ -154,8 +165,15 @@ public class Qytetet {
         return edificada;
     }
     
-    public boolean edificarHotel(){
-        throw new UnsupportedOperationException("Sin implementar");        
+    public boolean edificarHotel(int numeroCasilla){
+       Casilla casilla = tablero.ObtenerCasillaNumero(numeroCasilla);
+       TituloPropiedad titulo = casilla.getTitulo();
+       boolean edificada = jugadorActual.edificarCasa(titulo);
+       
+       if(edificada)
+           estado = EstadoJuego.JA_PUEDEGESTIONAR;
+       
+       return edificada;
     }
     
     private void encarcelarJugador(){
