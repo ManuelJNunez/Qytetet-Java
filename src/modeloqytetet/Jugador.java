@@ -7,7 +7,7 @@ import static modeloqytetet.TipoCasilla.SALIDA;
  *
  * @author manu
  */
-public class Jugador {
+public class Jugador implements Comparable{
     private boolean encarcelado;
     private String nombre;
     private int saldo;
@@ -23,6 +23,11 @@ public class Jugador {
         propiedades = new ArrayList<>();
         CasillaActual = new Casilla(0, SALIDA, 1000);
     }
+    @Override
+            public int compareTo(Object otroJugador){
+                int otroCapital = ((Jugador) otroJugador).obtenerCapital();
+                return otroCapital - obtenerCapital();
+            }
     
     Sorpresa getCartaLibertad(){
         return cartaLibertad;
