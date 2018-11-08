@@ -24,10 +24,10 @@ public class Jugador implements Comparable{
         CasillaActual = new Casilla(0, SALIDA, 1000);
     }
     @Override
-            public int compareTo(Object otroJugador){
-                int otroCapital = ((Jugador) otroJugador).obtenerCapital();
-                return otroCapital - obtenerCapital();
-            }
+    public int compareTo(Object otroJugador){
+        int otroCapital = ((Jugador) otroJugador).obtenerCapital();
+        return otroCapital - obtenerCapital();
+    }
     
     Sorpresa getCartaLibertad(){
         return cartaLibertad;
