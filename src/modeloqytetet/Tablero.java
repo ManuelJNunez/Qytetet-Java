@@ -10,7 +10,6 @@ public class Tablero {
     
     public Tablero (){
         inicializar();
-        
     }
     
     ArrayList getCasillas(){
