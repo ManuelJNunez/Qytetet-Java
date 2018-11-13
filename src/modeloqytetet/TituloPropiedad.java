@@ -28,19 +28,33 @@ public class TituloPropiedad {
     propietario = null;
     }
     
-    public String getnombre(){ return nombre; }
+    public String getnombre(){
+        return nombre;
+    }
     
-    public int getPrecioCompra(){ return precioCompra; }
+    public int getPrecioCompra(){
+        return precioCompra;
+    }
     
-    public int getAlquilerBase() { return alquilerBase; }
+    public int getAlquilerBase() {
+        return alquilerBase;
+    }
     
-    public float getFactorRevalorizacion() {return factorRevalorizacion; }
+    public float getFactorRevalorizacion() {
+        return factorRevalorizacion;
+    }
     
-    public int getPrecioEdificar() {return precioEdificar; }
+    public int getPrecioEdificar() {
+        return precioEdificar;
+    }
     
-    public int getNumHoteles() {return numHoteles; }
+    public int getNumHoteles() {
+        return numHoteles;
+    }
     
-    public int getNumCasas() {return numCasas; }
+    public int getNumCasas() {
+        return numCasas;
+    }
     
     Jugador getPropietario(){
         return propietario;
@@ -118,7 +132,7 @@ public class TituloPropiedad {
 
     @Override
     public String toString() {
-        return "Nombre: " + nombre + "- Propietario: " + propietario + "- Hipotecada: " + hipotecada + " - PrecioCompra: " + precioCompra + 
+        return "Nombre: " + nombre + "- Hipotecada: " + hipotecada + " - PrecioCompra: " + precioCompra + 
                " - Alquiler Base: " + alquilerBase + " - FactorRevalorizacion: " + factorRevalorizacion + 
                 " - hipotecaBase: " + hipotecaBase + " - Precio Edificar: " + precioEdificar + " - numHoteles: " +
                 " - numCasas: " + numCasas + "\n"; 

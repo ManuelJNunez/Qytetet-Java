@@ -86,8 +86,6 @@ public class Qytetet {
             cartaActual = null;
             estado = EstadoJuego.JA_CONSORPRESA;
         }
-    
-    
     }
     
     public void aplicarSorpresa(){
@@ -213,7 +211,6 @@ public class Qytetet {
         Casilla casilla = tablero.ObtenerCasillaNumero(numeroCasilla);
         TituloPropiedad titulo = casilla.getTitulo();
         jugadorActual.hipotecarPropiedad(titulo);
-
     }
     
     public void inicializarJuego(ArrayList <String> nombres){
@@ -221,7 +218,6 @@ public class Qytetet {
         inicializarTablero();
         inicializarCartasSorpresa();
         salidaJugadores();
-        
     }
     
     private void inicializarJugadores(ArrayList <String> nombres){
@@ -266,11 +262,11 @@ public class Qytetet {
     }
     
     public Casilla obtenerCasillaJugadorActual(){
-        throw new UnsupportedOperationException("Sin implementar");
+        return jugadorActual.getCasillaActual();
     }
     
     public ArrayList obtenerCasillasTablero(){
-        throw new UnsupportedOperationException("Sin implementar");
+        return tablero.getCasillas();
     }
     
     public ArrayList obtenerPropiedadesJugador(){
@@ -317,6 +313,7 @@ public class Qytetet {
             jugadores.get(i).setCasillaActual(tablero.ObtenerCasillaNumero(0));
         Random rndm = new Random();         
         turno = rndm.nextInt(jugadores.size());
+        iterador = turno;
         jugadorActual = jugadores.get(turno);
         estado = EstadoJuego.JA_PREPARADO;
     }
@@ -325,7 +322,6 @@ public class Qytetet {
     
     public void siguienteJugador(){
         iterador++;
-        
         iterador = iterador%jugadores.size();
         jugadorActual = jugadores.get(iterador);
         

@@ -12,7 +12,7 @@ public class Jugador implements Comparable{
     private String nombre;
     private int saldo;
     private Sorpresa cartaLibertad;
-    private ArrayList<TituloPropiedad> propiedades;
+    private ArrayList<TituloPropiedad> propiedades = new ArrayList<>();
     private Casilla CasillaActual;
     
     public Jugador(String nombre){
@@ -20,8 +20,6 @@ public class Jugador implements Comparable{
         encarcelado = false;
         saldo = 7500;
         cartaLibertad = null;
-        propiedades = new ArrayList<>();
-        CasillaActual = new Casilla(0, SALIDA, 1000);
     }
     @Override
     public int compareTo(Object otroJugador){
@@ -83,7 +81,7 @@ public class Jugador implements Comparable{
         boolean comprado = false;
         int costeCompra = this.CasillaActual.getCoste();
         if(costeCompra < this.saldo){
-            TituloPropiedad titulo = this.CasillaActual.asignarPropietario(this);
+            TituloPropiedad titulo = CasillaActual.asignarPropietario(this);
             comprado = true;
             this.propiedades.add(titulo);
             this.modificarSaldo(-costeCompra);
@@ -262,7 +260,7 @@ public class Jugador implements Comparable{
 
     @Override
     public String toString(){
-        String texto = "\nNombre: " + nombre + "\nSaldo: " + saldo + "\nCapital: " + this.obtenerCapital() + "\nEncarcelado: " + encarcelado + "\nEstá en la casilla: " + CasillaActual + "\nCarta liberad: " + cartaLibertad + "\nPropiedades:\n";
+        String texto = "\nNombre: " + nombre + "\nSaldo: " + saldo + "\nCapital: " + this.obtenerCapital() + "\nEncarcelado: " + encarcelado + "\nEstá en la casilla: " + CasillaActual + "\nCarta libertad: " + cartaLibertad + "\nPropiedades:\n";
         
         for(TituloPropiedad tp: propiedades){
             texto += tp + "\n";

@@ -36,7 +36,7 @@ public class Casilla {
     }
     
     TituloPropiedad asignarPropietario(Jugador jugador){
-        this.titulo.setPropietario(jugador);
+        titulo.setPropietario(jugador);
         return titulo;
     }
     

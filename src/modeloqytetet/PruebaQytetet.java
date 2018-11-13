@@ -80,34 +80,19 @@ public class PruebaQytetet {
         
         System.out.println(juego.getJugadores());
         
-        ArrayList<Sorpresa> filtrado = juego.getMazo();
-        
-        for(Sorpresa s: filtrado)
-            System.out.println(s);
-        
-        filtrado = prueba.ValorMayorQueCero();
-        
-        System.out.println("\nCartas con valor mayor que 0:");
-        
-        for(Sorpresa s: filtrado)
-            System.out.println(s);
-        
-        filtrado = prueba.CartasIrA();
-        
-        System.out.println("\nCartas del tipo IrA:");
-        
-        for(Sorpresa s: filtrado)
-            System.out.println(s);
-        
-        System.out.println("");
-        
-        for(TipoSorpresa tipo: TipoSorpresa.values()){
-            System.out.println("Sorpresas del tipo: " + tipo);
-            filtrado = prueba.FiltrarTipo(tipo);
-            for(Sorpresa s: filtrado)
-                System.out.println(s);
-        }
-        System.out.println(juego.getTablero());
-        
+        int desplazamiento = juego.tirarDado();
+        System.out.println("El jugador " + juego.getJugadorActual().getNombre() + " se desplaza: " + desplazamiento + " casillas.");
+        juego.mover(4);
+        juego.comprarTituloPropiedad();
+        System.out.println(juego.obtenerCasillaJugadorActual());
+        System.out.println(juego.getJugadorActual());
+        juego.siguienteJugador();
+        desplazamiento = juego.tirarDado();
+        System.out.println("El jugador " + juego.getJugadorActual().getNombre() + " se desplaza: " + desplazamiento + " casillas.");
+        juego.mover(4);
+        System.out.println(juego.obtenerCasillaJugadorActual());
+
+
+
     }
 }
