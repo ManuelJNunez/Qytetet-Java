@@ -234,8 +234,8 @@ public class Qytetet {
     }
     
     public boolean intentarSalirCarcel(MetodoSalirCarcel metodo){
-        int resultado = tirarDado();
         if(metodo == MetodoSalirCarcel.TIRANDODADO){
+            int resultado = tirarDado();
             if(resultado >= 5)
                 jugadorActual.setEncarcelado(false);
         }else if(metodo == MetodoSalirCarcel.PAGANDOLIBERTAD){

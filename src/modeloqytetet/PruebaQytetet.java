@@ -97,6 +97,7 @@ public class PruebaQytetet {
         System.out.println(juego.getJugadorActual());
         System.out.println(juego.getCartaActual());
         juego.aplicarSorpresa();
+        juego.venderPropiedad(4);
         System.out.println(juego.getJugadorActual());
     }
 }
