@@ -1,6 +1,7 @@
 package modeloqytetet;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Collections;
 import java.util.Random;
 
@@ -302,7 +303,9 @@ public class Qytetet {
         return propiedades;
     }
     
-    public void obtenerRanking(){}
+    public void obtenerRanking(){
+        Collections.sort(jugadores);
+    }
     
     public int obtenerSaldoJugadorActual(){
         return jugadores.get(iterador).getSaldo();
