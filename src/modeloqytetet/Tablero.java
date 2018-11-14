@@ -51,7 +51,7 @@ public class Tablero {
         titulo = new TituloPropiedad ("Jardines del Triunfo", 800, 500, 10, 60, 200);
         this.casillas.add(new Casilla (17, titulo));
         this.casillas.add(new Casilla (18, TipoCasilla.IMPUESTO, 250));
-        titulo = new TituloPropiedad ("Parque Almunia", 800, 500, 10, 60, 200);
+        titulo = new TituloPropiedad ("Calle Acera del Darro", 800, 500, 10, 60, 200);
         this.casillas.add(new Casilla (19, titulo));
         
         this.carcel = this.casillas.get(5);
