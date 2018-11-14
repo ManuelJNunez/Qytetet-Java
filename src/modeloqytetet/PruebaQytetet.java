@@ -84,6 +84,7 @@ public class PruebaQytetet {
         System.out.println("El jugador " + juego.getJugadorActual().getNombre() + " se desplaza: " + desplazamiento + " casillas.");
         juego.mover(4);
         juego.comprarTituloPropiedad();
+        juego.edificarCasa(4);
         System.out.println(juego.obtenerCasillaJugadorActual());
         System.out.println(juego.getJugadorActual());
         juego.siguienteJugador();

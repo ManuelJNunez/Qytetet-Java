@@ -12,7 +12,7 @@ package modeloqytetet;
 public class Dado {
     private int valor = 0;
     
-    private static final Dado instance = new Dado();
+    private static Dado instance = new Dado();
     
     private Dado(){}
     
