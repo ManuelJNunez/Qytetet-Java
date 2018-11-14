@@ -99,5 +99,6 @@ public class PruebaQytetet {
         juego.aplicarSorpresa();
         juego.venderPropiedad(4);
         System.out.println(juego.getJugadorActual());
+        juego.obtenerRanking();
     }
 }
