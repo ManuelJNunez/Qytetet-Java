@@ -117,11 +117,12 @@ public class Qytetet {
             if(jugadorActual.getSaldo()<0)
                 estado = EstadoJuego.ALGUNJUGADORENBANCARROTA;
         } else if(tipo == TipoSorpresa.PORJUGADOR){
-            for(int i = 0; i<jugadores.size(); i++){
+            for(int i = 0; i<jugadores.size()-1; i++){
                 Jugador jugador = jugadores.get((iterador+1)%jugadores.size());
                 if(jugador != jugadorActual){
                     jugador.modificarSaldo(cartaActual.getValor());
-                    if(jugador.getSaldo() == 0)
+                    
+                    if(jugador.getSaldo() < 0)
                        estado = EstadoJuego.ALGUNJUGADORENBANCARROTA;
                     
                     jugadorActual.modificarSaldo(-cartaActual.getValor());
