@@ -100,5 +100,10 @@ public class PruebaQytetet {
         juego.venderPropiedad(4);
         System.out.println(juego.getJugadorActual());
         juego.obtenerRanking();
+        
+        ArrayList<Jugador> jugadores = juego.getJugadores();
+        
+        for(Jugador player: jugadores)
+            System.out.println(player);
     }
 }
