@@ -51,7 +51,7 @@ public class Qytetet {
         mazo.add(new Sorpresa("Pagar por el mantenimiento de tus propiedades.", -25, TipoSorpresa.PORCASAHOTEL));
         mazo.add(new Sorpresa("Tus edificios son muy bonitos. Recibes un premio de arquitectura.", 25, TipoSorpresa.PORCASAHOTEL));
         mazo.add(new Sorpresa("Los demás se enteran de que tienes cuentas en el extrangero. Mejor sobornarlos para que no hablen, ¿no?", -200, TipoSorpresa.PORJUGADOR));
-        mazo.add(new Sorpresa("Parece ser que es tu cumpleaños o tal vez los estés engañando, maldito mentiroso, recibes dinero de los demás como regalo.", 200, TipoSorpresa.PORJUGADOR));
+        mazo.add(new Sorpresa("Parece ser que es tu cumpleaños o tal vez los estés engañando, maldito mentiroso, recibes dinero de los demás como regalo.", -200, TipoSorpresa.PORJUGADOR));
         mazo.add(new Sorpresa("Tienes contactos en el gobierno que logran sacarte de la cárcel.", 0, TipoSorpresa.SALIRCARCEL));
         Random rndm = new Random();  
         Collections.shuffle(mazo, rndm);
@@ -83,7 +83,8 @@ public class Qytetet {
             encarcelarJugador();
         }
         else if (casillaActual.getTipo() == TipoCasilla.SORPRESA){
-            cartaActual = null;
+            cartaActual = mazo.get(0);
+            mazo.remove(0);
             estado = EstadoJuego.JA_CONSORPRESA;
         }
     }
@@ -318,7 +319,9 @@ public class Qytetet {
         estado = EstadoJuego.JA_PREPARADO;
     }
     
-    private void setCartaActual(Sorpresa cartaActual){}
+    private void setCartaActual(Sorpresa cartaActual){
+        this.cartaActual = cartaActual;
+    }
     
     public void siguienteJugador(){
         iterador++;

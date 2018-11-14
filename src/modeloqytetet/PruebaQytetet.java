@@ -90,9 +90,12 @@ public class PruebaQytetet {
         desplazamiento = juego.tirarDado();
         System.out.println("El jugador " + juego.getJugadorActual().getNombre() + " se desplaza: " + desplazamiento + " casillas.");
         juego.mover(4);
-        System.out.println(juego.obtenerCasillaJugadorActual());
-
-
-
+        System.out.println(juego.getJugadorActual());
+        juego.siguienteJugador();
+        juego.mover(3);
+        System.out.println(juego.getJugadorActual());
+        System.out.println(juego.getCartaActual());
+        juego.aplicarSorpresa();
+        System.out.println(juego.getJugadorActual());
     }
 }

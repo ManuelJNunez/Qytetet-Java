@@ -260,10 +260,10 @@ public class Jugador implements Comparable{
 
     @Override
     public String toString(){
-        String texto = "\nNombre: " + nombre + "\nSaldo: " + saldo + "\nCapital: " + this.obtenerCapital() + "\nEncarcelado: " + encarcelado + "\nEstá en la casilla: " + CasillaActual + "\nCarta libertad: " + cartaLibertad + "\nPropiedades:\n";
+        String texto = "\nNombre: " + nombre + "\nSaldo: " + saldo + "\nCapital: " + this.obtenerCapital() + "\nEncarcelado: " + encarcelado + "\nEstá en la casilla:" + CasillaActual + "Carta libertad: " + cartaLibertad + "\nPropiedades:\n";
         
         for(TituloPropiedad tp: propiedades){
-            texto += tp + "\n";
+            texto += tp;
         }
         
         return texto;
