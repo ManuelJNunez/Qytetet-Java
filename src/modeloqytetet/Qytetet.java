@@ -11,11 +11,11 @@ import java.util.Random;
  */
 public class Qytetet {
     private static final Qytetet instance = new Qytetet();
-    public int MAX_JUGADORES = 4;
-    int NUM_SORPRESA = 10;
-    public int NUM_CASILLAS = 20;
-    int PRECIO_LIBERTAD = 200;
-    int SALDO_SALIDA = 1000;
+    public static int MAX_JUGADORES = 4;
+    static int NUM_SORPRESA = 10;
+    public static int NUM_CASILLAS = 20;
+    static int PRECIO_LIBERTAD = 200;
+    static int SALDO_SALIDA = 1000;
     private Sorpresa cartaActual = null;
     private Dado dado = Dado.getInstance();
     private ArrayList<Jugador> jugadores = new ArrayList<>();
