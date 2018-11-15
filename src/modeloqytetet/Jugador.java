@@ -52,7 +52,8 @@ public class Jugador implements Comparable{
     }
     
     void setCartaLibertad(Sorpresa carta){
-        cartaLibertad = carta;
+        if(carta.getTipo() == TipoSorpresa.SALIRCARCEL)
+            cartaLibertad = carta;
     }
     
     void setCasillaActual(Casilla casilla){
