@@ -134,7 +134,7 @@ public class TituloPropiedad {
     public String toString() {
         return "Nombre: " + nombre + "- Hipotecada: " + hipotecada + " - PrecioCompra: " + precioCompra + 
                " - Alquiler Base: " + alquilerBase + " - FactorRevalorizacion: " + factorRevalorizacion + 
-                " - hipotecaBase: " + hipotecaBase + " - Precio Edificar: " + precioEdificar + " - numHoteles: " +
+                " - hipotecaBase: " + hipotecaBase + " - Precio Edificar: " + precioEdificar + " - numHoteles: " + numHoteles +
                 " - numCasas: " + numCasas + "\n"; 
      }
     

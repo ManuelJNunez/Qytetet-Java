@@ -171,7 +171,7 @@ public class Qytetet {
     public boolean edificarHotel(int numeroCasilla){
        Casilla casilla = tablero.ObtenerCasillaNumero(numeroCasilla);
        TituloPropiedad titulo = casilla.getTitulo();
-       boolean edificada = jugadorActual.edificarCasa(titulo);
+       boolean edificada = jugadorActual.edificarHotel(titulo);
        
        if(edificada)
            estado = EstadoJuego.JA_PUEDEGESTIONAR;
