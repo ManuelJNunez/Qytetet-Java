@@ -54,6 +54,8 @@ public class Qytetet {
         mazo.add(new Sorpresa("Los demás se enteran de que tienes cuentas en el extrangero. Mejor sobornarlos para que no hablen, ¿no?", 200, TipoSorpresa.PORJUGADOR));
         mazo.add(new Sorpresa("Parece ser que es tu cumpleaños o tal vez los estés engañando, maldito mentiroso, recibes dinero de los demás como regalo.", -200, TipoSorpresa.PORJUGADOR));
         mazo.add(new Sorpresa("Tienes contactos en el gobierno que logran sacarte de la cárcel.", 0, TipoSorpresa.SALIRCARCEL));
+        mazo.add(new Sorpresa("Te conviertes en especulaor, por la cara.", 3000, TipoSorpresa.CONVERTIRME));
+        mazo.add(new Sorpresa("Te conviertes en especulaor, por la cara.", 5000, TipoSorpresa.CONVERTIRME));
         Random rndm = new Random();  
         Collections.shuffle(mazo, rndm);
     }
@@ -131,6 +133,8 @@ public class Qytetet {
                         estado = EstadoJuego.ALGUNJUGADORENBANCARROTA;
                 }
             }
+        }else if(tipo == TipoSorpresa.CONVERTIRME){
+            jugadores.set(iterador, jugadorActual.convertirme(cartaActual.getValor()));
         }
     }
     
