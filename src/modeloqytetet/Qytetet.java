@@ -97,48 +97,44 @@ public class Qytetet {
         TipoSorpresa tipo = cartaActual.getTipo();
         if(tipo == TipoSorpresa.SALIRCARCEL)
             jugadorActual.setCartaLibertad(cartaActual);
-        else 
-            mazo.add(cartaActual);
-        
-        if(tipo == TipoSorpresa.PAGARCOBRAR){
+        else if(tipo == TipoSorpresa.PAGARCOBRAR){
             jugadorActual.modificarSaldo(cartaActual.getValor());
             if(jugadorActual.getSaldo()<0)
                 estado = EstadoJuego.ALGUNJUGADORENBANCARROTA;
         }
         else{
             mazo.add(cartaActual);
-            
-            if (tipo == TipoSorpresa.IRACASILLA){
-                int valor = cartaActual.getValor();
-                boolean casillaCarcel = tablero.esCasillaCarcel(valor);
-                if(casillaCarcel)
-                    encarcelarJugador();
-                else
-                    mover(valor);
-            } else if(tipo == TipoSorpresa.PORCASAHOTEL){
-                int cantidad = cartaActual.getValor();
-                int numeroTotal = jugadorActual.CuantasCasasHotelesTengo();
-                jugadorActual.modificarSaldo(cantidad*numeroTotal);
-                if(jugadorActual.getSaldo()<0)
-                    estado = EstadoJuego.ALGUNJUGADORENBANCARROTA;
-            } else if(tipo == TipoSorpresa.PORJUGADOR){
-                for(int i = 0; i<jugadores.size()-1; i++){
-                    Jugador jugador = jugadores.get((iterador+1)%jugadores.size());
-                    if(jugador != jugadorActual){
-                        jugador.modificarSaldo(cartaActual.getValor());
+        }
+        if (tipo == TipoSorpresa.IRACASILLA){
+            int valor = cartaActual.getValor();
+            boolean casillaCarcel = tablero.esCasillaCarcel(valor);
+            if(casillaCarcel)
+                encarcelarJugador();
+            else
+                mover(valor);
+        } else if(tipo == TipoSorpresa.PORCASAHOTEL){
+            int cantidad = cartaActual.getValor();
+            int numeroTotal = jugadorActual.CuantasCasasHotelesTengo();
+            jugadorActual.modificarSaldo(cantidad*numeroTotal);
+            if(jugadorActual.getSaldo()<0)
+                estado = EstadoJuego.ALGUNJUGADORENBANCARROTA;
+        } else if(tipo == TipoSorpresa.PORJUGADOR){
+            for(int i = 0; i<jugadores.size()-1; i++){
+                Jugador jugador = jugadores.get((iterador+1)%jugadores.size());
+                if(jugador != jugadorActual){
+                    jugador.modificarSaldo(cartaActual.getValor());
                     
-                        if(jugador.getSaldo() < 0)
+                    if(jugador.getSaldo() < 0)
+                       estado = EstadoJuego.ALGUNJUGADORENBANCARROTA;
+                    
+                    jugadorActual.modificarSaldo(-cartaActual.getValor());
+                    
+                    if(jugadorActual.getSaldo()<0)
                         estado = EstadoJuego.ALGUNJUGADORENBANCARROTA;
-                    
-                        jugadorActual.modificarSaldo(-cartaActual.getValor());
-                    
-                        if(jugadorActual.getSaldo()<0)
-                            estado = EstadoJuego.ALGUNJUGADORENBANCARROTA;
-                    }
                 }
-            }else if(tipo == TipoSorpresa.CONVERTIRME){
-                jugadores.set(iterador, jugadorActual.convertirme(cartaActual.getValor()));
             }
+        }else if(tipo == TipoSorpresa.CONVERTIRME){
+            jugadores.set(iterador, jugadorActual.convertirme(cartaActual.getValor()));
         }
     }
     
