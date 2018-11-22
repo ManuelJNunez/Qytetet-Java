@@ -28,7 +28,7 @@ public class Especulador extends Jugador{
     
     @Override
     protected boolean deboIrACarcel(){
-        return super.tengoCartaLibertad() && !pagarFianza();
+        return super.deboIrACarcel() && !pagarFianza();
     }
     
     boolean pagarFianza(){
