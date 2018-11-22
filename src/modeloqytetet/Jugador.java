@@ -126,7 +126,7 @@ public class Jugador implements Comparable{
     }
     
     protected boolean deboIrACarcel(){
-        return tengoCartaLibertad();
+        return !tengoCartaLibertad();
     }
     
     Sorpresa devolverCartaLibertad(){
