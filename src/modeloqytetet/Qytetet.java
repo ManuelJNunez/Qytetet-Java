@@ -24,8 +24,8 @@ public class Qytetet {
     private int iterador = 0;
     private Jugador jugadorActual = null;
     
-    private Qytetet(){
-    }
+    private Qytetet(){}
+    
     public static Qytetet getInstance(){
         return instance;
     }
