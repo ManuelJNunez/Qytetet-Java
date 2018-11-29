@@ -86,7 +86,8 @@ public class Jugador implements Comparable{
         boolean comprado = false;
         int costeCompra = this.CasillaActual.getCoste();
         if(costeCompra < this.saldo){
-            TituloPropiedad titulo = CasillaActual.asignarPropietario(this);
+            TituloPropiedad titulo = CasillaActual.getTitulo();
+            titulo.setPropietario(this);
             comprado = true;
             this.propiedades.add(titulo);
             this.modificarSaldo(-costeCompra);
@@ -239,7 +240,7 @@ public class Jugador implements Comparable{
     }
     
     void pagarAlquiler(){
-        int costeAlquiler = this.CasillaActual.pagarAlquiler();
+        int costeAlquiler = this.CasillaActual.getCoste();
         this.modificarSaldo(-costeAlquiler);
     }
     

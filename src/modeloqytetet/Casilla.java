@@ -4,80 +4,52 @@ package modeloqytetet;
  * @author Fernando Roldán
  */
 
-public class Casilla {
+public abstract class Casilla {
     
     private int numeroCasilla;
-    private int coste;
+    private int coste = 0;
     private TipoCasilla tipo;
     private TituloPropiedad titulo;
-    
-    //Tipo Calle
-    public Casilla(int numCasilla, TituloPropiedad tp)
-    {
-        this.numeroCasilla = numCasilla;
-        this.tipo = TipoCasilla.CALLE;
-        setTitulo(tp);
-        this.coste = titulo.getPrecioCompra();
-    
-    }
-   
-   ///Cualquier otro tipo
-    public Casilla(int numCasilla, TipoCasilla tipo, int price) 
+    public Casilla(int numCasilla, int coste, TipoCasilla tipo, TituloPropiedad titulo)
     {
         this.numeroCasilla = numCasilla;
         this.tipo = tipo;
-        this.titulo = null;
-        this.coste = price;
+        this.coste = coste;
+        this.titulo = titulo;
+    
     }
     
-    public Casilla(int numCasilla, TipoCasilla tipo){
-        this.numeroCasilla = numCasilla;
-        this.tipo = tipo;
-    }
-    
-    TituloPropiedad asignarPropietario(Jugador jugador){
-        titulo.setPropietario(jugador);
-        return titulo;
-    }
-    
-    public int getNumeroCasilla(){
+    int getNumeroCasilla(){
         return numeroCasilla;
     }
     
-    public int getCoste() {
+    int getCoste() {
         return coste;
     }
     
-    public TipoCasilla getTipo() {
-        return tipo;
+    public void setCoste(int coste){
+        this.coste = coste;
     }
     
-    public TituloPropiedad getTitulo() {
-        return titulo;
+    protected abstract TipoCasilla getTipo(); //{return this.tipo;}
+    
+    protected void setTitulo(TituloPropiedad titulo){
+        this.titulo = titulo;
     }
     
-    int pagarAlquiler(){
-        int costeAlquiler = this.titulo.pagarAlquiler();
-        return costeAlquiler;
+    protected TituloPropiedad getTitulo(){
+        return this.titulo;
     }
     
-    boolean propietarioEncarcelado(){
-        return titulo.propietarioEncarcelado();
-    }
     
-    public void setTitulo(TituloPropiedad tp) 
-    {
-        this.titulo = tp;
+    protected boolean soyEdificable(){
+        if(this.tipo == TipoCasilla.CALLE )
+            return true;
+        else
+            return false;
     }
-    
-    boolean soyEdificable(){
-        return tipo == TipoCasilla.CALLE;
-    }
-    
-    boolean tengoPropietario(){
-        return titulo.tengoPropietario();
-    }
-    
+
+    protected abstract boolean tengoPropietario();
     @Override
     public String toString() {
         return "Numero de Casilla: " + numeroCasilla + " - Coste: " + coste + " - Tipo de Casilla: " + tipo + " - Titulo de Propiedad:\n " + titulo;
