@@ -58,7 +58,7 @@ public class VistaTextualQytetet {
         Scanner sc = new Scanner(System.in);        
         
         while(!correcto){
-            System.out.println("Introduce tu orden: ");
+            System.out.print("\nIntroduce tu orden: ");
             orden = sc.nextLine();
             
             for(int i = 0; i < valoresCorrectos.size() && !correcto; ++i){
@@ -77,8 +77,12 @@ public class VistaTextualQytetet {
         ArrayList<Integer> op = controlador.obtenerOperacionesJuegoValidas();
         ArrayList<String> ops = new ArrayList<>();
         
-        for(int num: op)
+        System.out.print("\nÓrdenes disponibles: ");
+        for(int num: op){
+            System.out.print(OpcionMenu.values()[num] + "(" + num + ")" + " ");
             ops.add(Integer.toString(num));
+        }
+        
         
         return Integer.parseInt(this.leerValorCorrecto(ops));
     }

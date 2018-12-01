@@ -113,9 +113,8 @@ public class ControladorQytetet {
                 mensaje = "No se pudo salir de la cárcel.";
         }else if(opcion == OpcionMenu.COMPRARTITULOPROPIEDAD){
             boolean comprado = modelo.comprarTituloPropiedad();
-            if(!comprado){
+            if(!comprado)
                 mensaje = "No se pudo comprar: no tienes saldo suficiente.";
-            }
         }else if(opcion == OpcionMenu.CANCELARHIPOTECA){
             boolean cancelada = modelo.cancelarHipoteca(casillaElegida);
             if(!cancelada)
