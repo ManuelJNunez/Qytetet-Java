@@ -43,6 +43,7 @@ public class VistaTextualQytetet {
         if(casillas.isEmpty())
             return -1;
         else{
+            System.out.print("\nIndique la casilla que desea cambiar: ");
             for(int i = 0; i < casillas.size(); ++i){
                 System.out.print(casillas.get(i) + " ");
                 casillass.add(Integer.toString(casillas.get(i)));
