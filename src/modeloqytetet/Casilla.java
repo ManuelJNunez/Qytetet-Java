@@ -5,18 +5,12 @@ package modeloqytetet;
  */
 
 public abstract class Casilla {
-    
     private int numeroCasilla;
     private int coste = 0;
-    private TipoCasilla tipo;
-    private TituloPropiedad titulo;
-    public Casilla(int numCasilla, int coste, TipoCasilla tipo, TituloPropiedad titulo)
-    {
-        this.numeroCasilla = numCasilla;
-        this.tipo = tipo;
-        this.coste = coste;
-        this.titulo = titulo;
     
+    public Casilla(int numCasilla, int coste){
+        this.numeroCasilla = numCasilla;
+        this.coste = coste;
     }
     
     int getNumeroCasilla(){
@@ -31,27 +25,16 @@ public abstract class Casilla {
         this.coste = coste;
     }
     
-    protected abstract TipoCasilla getTipo(); //{return this.tipo;}
+    protected abstract TipoCasilla getTipo();
     
-    protected void setTitulo(TituloPropiedad titulo){
-        this.titulo = titulo;
-    }
+    protected abstract TituloPropiedad getTitulo();
     
-    protected TituloPropiedad getTitulo(){
-        return this.titulo;
-    }
+    protected abstract boolean soyEdificable();
     
-    
-    protected boolean soyEdificable(){
-        if(this.tipo == TipoCasilla.CALLE )
-            return true;
-        else
-            return false;
-    }
-
     protected abstract boolean tengoPropietario();
+    
     @Override
     public String toString() {
-        return "Numero de Casilla: " + numeroCasilla + " - Coste: " + coste + " - Tipo de Casilla: " + tipo + " - Titulo de Propiedad:\n " + titulo;
+        return "Numero de Casilla: " + numeroCasilla + " - Coste: " + coste;
     }
 }

@@ -43,6 +43,7 @@ public class Qytetet {
     }
     
     private void inicializarCartasSorpresa(){
+        mazo.add(new Sorpresa("Te conviertes en especulaor, por la cara.", 3000, TipoSorpresa.CONVERTIRME));
         mazo.add(new Sorpresa("El banco se ha equivocado en algunas cuentas y te devuelven dinero. Es que no estudian...", 250, TipoSorpresa.PAGARCOBRAR));
         mazo.add(new Sorpresa("Te han pillado tus cuentas en el extrangero.", -250, TipoSorpresa.PAGARCOBRAR));
         mazo.add(new Sorpresa("Tomas el tren que aún no ha llegado a Granada y llegas a la casilla 17.", 17, TipoSorpresa.IRACASILLA));
@@ -53,7 +54,6 @@ public class Qytetet {
         mazo.add(new Sorpresa("Los demás se enteran de que tienes cuentas en el extrangero. Mejor sobornarlos para que no hablen, ¿no?", 200, TipoSorpresa.PORJUGADOR));
         mazo.add(new Sorpresa("Parece ser que es tu cumpleaños o tal vez los estés engañando, maldito mentiroso, recibes dinero de los demás como regalo.", -200, TipoSorpresa.PORJUGADOR));
         mazo.add(new Sorpresa("Tienes contactos en el gobierno que logran sacarte de la cárcel.", 0, TipoSorpresa.SALIRCARCEL));
-        mazo.add(new Sorpresa("Te conviertes en especulaor, por la cara.", 3000, TipoSorpresa.CONVERTIRME));
         mazo.add(new Sorpresa("Te conviertes en especulaor, por la cara.", 5000, TipoSorpresa.CONVERTIRME));
         Random rndm = new Random();  
         Collections.shuffle(mazo, rndm);

@@ -102,6 +102,6 @@ public class VistaTextualQytetet {
             
             if (!necesitaElegirCasilla || casillaElegida >= 0)
                 System.out.println(controlador.realizarOperacion(operacionElegida,casillaElegida));
-        }while (1 == 1);
+        }while(true);
     }
 }

@@ -1,36 +1,34 @@
 package modeloqytetet;
 
 public class OtraCasilla extends Casilla{
-    private TituloPropiedad titulo = null;
     private TipoCasilla tipo;
-    OtraCasilla (int numCasilla, int coste, TipoCasilla tipo, TituloPropiedad titulo){
-        super(numCasilla, 0, tipo, titulo);
-    }
-    
-    OtraCasilla(int numCasilla, TipoCasilla tipo, int coste){
-        super (numCasilla, coste, tipo, null);
-    }
-    
-    OtraCasilla(int numCasilla, TipoCasilla tipo){
-        super (numCasilla, 0, tipo, null);
+    OtraCasilla (int numCasilla, int coste, TipoCasilla tipo){
+        super(numCasilla, coste);
+        this.tipo = tipo;
     }
 
     @Override
     protected TipoCasilla getTipo() {
         return tipo;
     }
-
+    
     @Override
-    protected boolean tengoPropietario() {
-        return false;
-    }
-    
     protected TituloPropiedad getTitulo(){
-        return titulo;
+        return null;
     }
     
+    @Override
     protected boolean soyEdificable(){
         return false;
     }
     
+    @Override
+    public boolean tengoPropietario(){
+        return false;
+    }
+    
+    @Override
+    public String toString(){
+        return super.toString() + "\n - Tipo: " + tipo;
+    }
 }

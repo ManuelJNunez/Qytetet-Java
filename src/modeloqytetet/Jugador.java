@@ -280,13 +280,11 @@ public class Jugador implements Comparable{
             return false;
     }
     
-    boolean venderPropiedad(Casilla casilla){
+    void venderPropiedad(Casilla casilla){
         TituloPropiedad titulo = casilla.getTitulo();
         this.eliminarDeMisPropiedades(titulo);
         int precioVenta = titulo.calcularPrecioVenta();
         this.modificarSaldo(precioVenta);
-        casilla.setTitulo(null);
-        return true;
     }
 
     @Override

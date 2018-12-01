@@ -7,7 +7,7 @@ public class Calle extends Casilla {
     private TituloPropiedad titulo;
     
     Calle (int numCasilla, TituloPropiedad tp){
-        super(numCasilla, tp.getPrecioCompra(), TipoCasilla.CALLE, tp);
+        super(numCasilla, tp.getPrecioCompra());
         titulo = tp;
     }
     
@@ -15,14 +15,17 @@ public class Calle extends Casilla {
         titulo.setPropietario(jugador);
     }
     
+    @Override
     protected TipoCasilla getTipo(){
         return TipoCasilla.CALLE;
     }
-    
+
+    @Override
     protected TituloPropiedad getTitulo(){
-        return super.getTitulo();
+        return titulo;
     }
-    
+
+    @Override
     public boolean tengoPropietario(){
         return titulo.tengoPropietario();
     }
@@ -32,12 +35,18 @@ public class Calle extends Casilla {
         return costeAlquiler;
     }
     
-    public void setTitulo(TituloPropiedad titulo){
+    private void setTitulo(TituloPropiedad titulo){
         this.titulo = titulo;
     }
-    
+
+    @Override
     protected boolean soyEdificable(){
-        return super.soyEdificable();
+        return true;
+    }
+    
+    @Override
+    public String toString(){
+        return super.toString() + "\n - Tipo: CALLE\n - Titulo:\n" + titulo;
     }
     
 }

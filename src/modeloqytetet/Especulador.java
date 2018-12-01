@@ -49,6 +49,6 @@ public class Especulador extends Jugador{
     
     @Override
     public String toString(){
-        return super.toString();
+        return super.toString() + "\nSoy especulador.";
     }
 }
