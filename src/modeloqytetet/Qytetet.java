@@ -203,7 +203,11 @@ public class Qytetet {
         return this.dado;
     }
     
-    Jugador getJugadorActual(){
+    public EstadoJuego getEstadoJuego(){
+        return estado;
+    }
+    
+    public Jugador getJugadorActual(){
         return jugadorActual;
     }
     
@@ -253,7 +257,7 @@ public class Qytetet {
     }
     
     public void jugar(){
-        Casilla casillafinal = tablero.obtenerCasillaFinal(jugadores.get(iterador).getCasillaActual(), this.tirarDado());
+        Casilla casillafinal = tablero.obtenerCasillaFinal(this.obtenerCasillaJugadorActual(), this.tirarDado());
         mover(casillafinal.getNumeroCasilla());
     }
     

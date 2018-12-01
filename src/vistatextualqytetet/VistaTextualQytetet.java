@@ -10,8 +10,8 @@ import controladorqytetet.*;
  * @author manu
  */
 public class VistaTextualQytetet {
-    Qytetet modelo;
-    ControladorQytetet controlador;
+    static Qytetet modelo;
+    static ControladorQytetet controlador;
 
     public VistaTextualQytetet() {
         modelo = Qytetet.getInstance();
@@ -83,7 +83,7 @@ public class VistaTextualQytetet {
         return Integer.parseInt(this.leerValorCorrecto(ops));
     }
     
-    public void main(String []args){
+    public static void main(String []args){
         VistaTextualQytetet ui = new VistaTextualQytetet();
         controlador.setNombreJugadores(ui.obtenerNombreJugadores());
         int operacionElegida, casillaElegida = 0;
