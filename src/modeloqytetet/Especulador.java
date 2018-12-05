@@ -28,11 +28,15 @@ public class Especulador extends Jugador{
     
     @Override
     protected boolean deboIrACarcel(){
-        return super.deboIrACarcel() && !pagarFianza();
+        return super.deboIrACarcel() && !tengoSaldo(fianza);
     }
     
     boolean pagarFianza(){
-        return super.tengoSaldo(fianza);
+        boolean pagada = super.tengoSaldo(fianza);
+        if(pagada)
+            this.modificarSaldo(-fianza);
+        
+        return pagada;
     }
     
     @Override
