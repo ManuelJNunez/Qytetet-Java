@@ -81,7 +81,7 @@ public class TituloPropiedad {
     
     int calcularPrecioVenta(){
         int precioVenta;
-        precioVenta =(int) (precioCompra + (numCasas + numHoteles) * precioEdificar * factorRevalorizacion);
+        precioVenta =(int) (precioCompra + (numCasas + numHoteles) * precioEdificar * ((factorRevalorizacion+100)/100.0));
         return precioVenta;
     }
     

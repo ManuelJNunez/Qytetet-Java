@@ -195,7 +195,7 @@ public class Qytetet {
         }
     }
     
-    public Sorpresa getCartaActual() {
+    public Sorpresa getCartaActual(){
         return cartaActual;
     }
     

@@ -1,7 +1,6 @@
 package modeloqytetet;
 
 import java.util.ArrayList;
-import static modeloqytetet.TipoCasilla.SALIDA;
 
 /**
  *
