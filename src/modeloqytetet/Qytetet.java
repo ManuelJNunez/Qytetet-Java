@@ -64,7 +64,7 @@ public class Qytetet {
             jugadorActual.pagarAlquiler();
         }
         Casilla casilla = obtenerCasillaJugadorActual();
-        boolean tengoPropietario = casilla.tengoPropietario();
+        boolean tengoPropietario = casilla.getTitulo().tengoPropietario();
         if (tengoPropietario){
             estado = EstadoJuego.JA_PUEDEGESTIONAR;
         }

@@ -182,7 +182,7 @@ public class Jugador implements Comparable{
     }
     
     boolean estoyEnCalleLibre(){
-        if(this.CasillaActual.soyEdificable() && !this.CasillaActual.tengoPropietario())
+        if(this.CasillaActual.soyEdificable() && !this.CasillaActual.getTitulo().tengoPropietario())
             return true;
         else
             return false;

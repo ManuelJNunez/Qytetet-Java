@@ -31,8 +31,6 @@ public abstract class Casilla {
     
     protected abstract boolean soyEdificable();
     
-    protected abstract boolean tengoPropietario();
-    
     @Override
     public String toString() {
         return "Numero de Casilla: " + numeroCasilla + " - Coste: " + coste;

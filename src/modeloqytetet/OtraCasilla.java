@@ -23,11 +23,6 @@ public class OtraCasilla extends Casilla{
     }
     
     @Override
-    public boolean tengoPropietario(){
-        return false;
-    }
-    
-    @Override
     public String toString(){
         return super.toString() + "\n - Tipo: " + tipo;
     }

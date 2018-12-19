@@ -25,7 +25,7 @@ public class Calle extends Casilla {
         return titulo;
     }
 
-    @Override
+    
     public boolean tengoPropietario(){
         return titulo.tengoPropietario();
     }
