@@ -21,7 +21,6 @@ public class Qytetet {
     private EstadoJuego estado;
     private ArrayList<Sorpresa> mazo = new ArrayList<>();
     private Tablero tablero;
-    private int iterador = 0;
     private Jugador jugadorActual = null;
     
     private Qytetet(){}
@@ -43,6 +42,8 @@ public class Qytetet {
     }
     
     private void inicializarCartasSorpresa(){
+        mazo.add(new Sorpresa("Te conviertes en especulaor, por la cara.", 3000, TipoSorpresa.CONVERTIRME));
+        mazo.add(new Sorpresa("Te conviertes en especulaor, por la cara.", 5000, TipoSorpresa.CONVERTIRME));
         mazo.add(new Sorpresa("El banco se ha equivocado en algunas cuentas y te devuelven dinero. Es que no estudian...", 250, TipoSorpresa.PAGARCOBRAR));
         mazo.add(new Sorpresa("Te han pillado tus cuentas en el extrangero.", -250, TipoSorpresa.PAGARCOBRAR));
         mazo.add(new Sorpresa("Tomas el tren que aún no ha llegado a Granada y llegas a la casilla 17.", 17, TipoSorpresa.IRACASILLA));
@@ -53,10 +54,8 @@ public class Qytetet {
         mazo.add(new Sorpresa("Los demás se enteran de que tienes cuentas en el extrangero. Mejor sobornarlos para que no hablen, ¿no?", 200, TipoSorpresa.PORJUGADOR));
         mazo.add(new Sorpresa("Parece ser que es tu cumpleaños o tal vez los estés engañando, maldito mentiroso, recibes dinero de los demás como regalo.", -200, TipoSorpresa.PORJUGADOR));
         mazo.add(new Sorpresa("Tienes contactos en el gobierno que logran sacarte de la cárcel.", 0, TipoSorpresa.SALIRCARCEL));
-        mazo.add(new Sorpresa("Te conviertes en especulaor, por la cara.", 3000, TipoSorpresa.CONVERTIRME));
-        mazo.add(new Sorpresa("Te conviertes en especulaor, por la cara.", 5000, TipoSorpresa.CONVERTIRME));
         Random rndm = new Random();  
-        Collections.shuffle(mazo, rndm);
+        //Collections.shuffle(mazo, rndm);
     }
 
     void actuarSiEnCasillaEdificable(){
@@ -119,7 +118,7 @@ public class Qytetet {
                 estado = EstadoJuego.ALGUNJUGADORENBANCARROTA;
         } else if(tipo == TipoSorpresa.PORJUGADOR){
             for(int i = 0; i<jugadores.size()-1; i++){
-                Jugador jugador = jugadores.get((iterador+1)%jugadores.size());
+                Jugador jugador = jugadores.get((jugadores.indexOf(jugadorActual)+1+i)%jugadores.size());
                 if(jugador != jugadorActual){
                     jugador.modificarSaldo(cartaActual.getValor());
                     
@@ -133,7 +132,7 @@ public class Qytetet {
                 }
             }
         }else if(tipo == TipoSorpresa.CONVERTIRME){
-            jugadores.set(iterador, jugadorActual.convertirme(cartaActual.getValor()));
+            jugadores.set(jugadores.indexOf(jugadorActual), jugadorActual.convertirme(cartaActual.getValor()));
         }
     }
     
@@ -318,7 +317,7 @@ public class Qytetet {
     }
     
     public int obtenerSaldoJugadorActual(){
-        return jugadores.get(iterador).getSaldo();
+        return jugadorActual.getSaldo();
     }
     
     private void salidaJugadores(){
@@ -327,7 +326,6 @@ public class Qytetet {
             jugadores.get(i).setCasillaActual(tablero.ObtenerCasillaNumero(0));
         Random rndm = new Random();         
         turno = rndm.nextInt(jugadores.size());
-        iterador = turno;
         jugadorActual = jugadores.get(turno);
         estado = EstadoJuego.JA_PREPARADO;
     }
@@ -337,11 +335,10 @@ public class Qytetet {
     }
     
     public void siguienteJugador(){
-        iterador++;
-        iterador = iterador%jugadores.size();
-        jugadorActual = jugadores.get(iterador);
+        int siguiente = (jugadores.indexOf(jugadorActual)+1)%jugadores.size();
+        jugadorActual = jugadores.get(siguiente);
         
-        if(jugadores.get(iterador).getEncarcelado())
+        if(jugadorActual.getEncarcelado())
             estado = EstadoJuego.JA_ENCARCELADOCONOPCIONDELIBERTAD;
         else
             estado = EstadoJuego.JA_PREPARADO;

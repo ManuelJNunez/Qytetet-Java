@@ -32,7 +32,7 @@ public class Especulador extends Jugador{
     }
     
     boolean pagarFianza(){
-        boolean pagada = super.tengoSaldo(fianza);
+        boolean pagada = this.tengoSaldo(fianza);
         if(pagada)
             this.modificarSaldo(-fianza);
         

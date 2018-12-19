@@ -136,7 +136,7 @@ public class TituloPropiedad {
                " - Alquiler Base: " + alquilerBase + " - FactorRevalorizacion: " + factorRevalorizacion + 
                 " - hipotecaBase: " + hipotecaBase + " - Precio Edificar: " + precioEdificar + " - numHoteles: " + numHoteles +
                 " - numCasas: " + numCasas + "\n"; 
-     }
+    }
     
     
 }
