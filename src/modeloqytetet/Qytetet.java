@@ -55,7 +55,7 @@ public class Qytetet {
         mazo.add(new Sorpresa("Parece ser que es tu cumpleaños o tal vez los estés engañando, maldito mentiroso, recibes dinero de los demás como regalo.", -200, TipoSorpresa.PORJUGADOR));
         mazo.add(new Sorpresa("Tienes contactos en el gobierno que logran sacarte de la cárcel.", 0, TipoSorpresa.SALIRCARCEL));
         Random rndm = new Random();  
-        //Collections.shuffle(mazo, rndm);
+        Collections.shuffle(mazo, rndm);
     }
 
     void actuarSiEnCasillaEdificable(){
