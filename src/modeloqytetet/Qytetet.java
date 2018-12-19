@@ -131,7 +131,9 @@ public class Qytetet {
                     }
                 }
             }else if(tipo == TipoSorpresa.CONVERTIRME){
-                jugadores.set(jugadores.indexOf(jugadorActual), jugadorActual.convertirme(cartaActual.getValor()));
+                Especulador espec = new Especulador(jugadorActual, cartaActual.getValor());
+                jugadores.set(jugadores.indexOf(jugadorActual), espec);
+                jugadorActual = espec;
             }
         }
     }

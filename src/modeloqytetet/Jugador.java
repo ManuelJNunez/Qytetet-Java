@@ -244,7 +244,7 @@ public class Jugador implements Comparable{
     }
     
     protected void pagarImpuesto(){
-        saldo -= CasillaActual.getCoste();
+        this.modificarSaldo(-CasillaActual.getCoste());
     }
     
     void pagarLibertad(int cantidad){
