@@ -42,6 +42,7 @@ public class Qytetet {
     }
     
     private void inicializarCartasSorpresa(){
+        mazo.add(new Sorpresa("Los demás se enteran de que tienes cuentas en el extrangero. Mejor sobornarlos para que no hablen, ¿no?", 200, TipoSorpresa.PORJUGADOR));
         mazo.add(new Sorpresa("Te conviertes en especulaor, por la cara.", 3000, TipoSorpresa.CONVERTIRME));
         mazo.add(new Sorpresa("Te conviertes en especulaor, por la cara.", 5000, TipoSorpresa.CONVERTIRME));
         mazo.add(new Sorpresa("El banco se ha equivocado en algunas cuentas y te devuelven dinero. Es que no estudian...", 250, TipoSorpresa.PAGARCOBRAR));
@@ -51,7 +52,6 @@ public class Qytetet {
         mazo.add(new Sorpresa("El 7 dicen que da suerte. Vamos a comprobarlo mandándote a esa casilla.", 7, TipoSorpresa.IRACASILLA));
         mazo.add(new Sorpresa("Pagar por el mantenimiento de tus propiedades.", -25, TipoSorpresa.PORCASAHOTEL));
         mazo.add(new Sorpresa("Tus edificios son muy bonitos. Recibes un premio de arquitectura.", 25, TipoSorpresa.PORCASAHOTEL));
-        mazo.add(new Sorpresa("Los demás se enteran de que tienes cuentas en el extrangero. Mejor sobornarlos para que no hablen, ¿no?", 200, TipoSorpresa.PORJUGADOR));
         mazo.add(new Sorpresa("Parece ser que es tu cumpleaños o tal vez los estés engañando, maldito mentiroso, recibes dinero de los demás como regalo.", -200, TipoSorpresa.PORJUGADOR));
         mazo.add(new Sorpresa("Tienes contactos en el gobierno que logran sacarte de la cárcel.", 0, TipoSorpresa.SALIRCARCEL));
         Random rndm = new Random();  
@@ -116,7 +116,7 @@ public class Qytetet {
                 if(jugadorActual.getSaldo()<0)
                     estado = EstadoJuego.ALGUNJUGADORENBANCARROTA;
             } else if(tipo == TipoSorpresa.PORJUGADOR){
-                for(int i = 0; i<jugadores.size()-1; i++){
+                for(int i = 0; i<jugadores.size(); i++){
                     Jugador jugador = jugadores.get((jugadores.indexOf(jugadorActual)+1+i)%jugadores.size());
                     if(jugador != jugadorActual){
                         jugador.modificarSaldo(cartaActual.getValor());
