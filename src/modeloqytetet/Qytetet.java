@@ -278,11 +278,11 @@ public class Qytetet {
         return jugadorActual.getCasillaActual();
     }
     
-    public ArrayList obtenerCasillasTablero(){
+    public ArrayList<Casilla> obtenerCasillasTablero(){
         return tablero.getCasillas();
     }
     
-    public ArrayList obtenerPropiedadesJugador(){
+    public ArrayList<Integer> obtenerPropiedadesJugador(){
         ArrayList<Integer> propiedades = new ArrayList<>();
         ArrayList<TituloPropiedad> prop = jugadorActual.getPropiedades();
         ArrayList<Casilla> casillas = tablero.getCasillas();
@@ -298,7 +298,7 @@ public class Qytetet {
         return propiedades;
     }
     
-    public ArrayList obtenerPropiedadesJugadorSegunEstadoHipoteca(boolean estadoHipoteca){
+    public ArrayList<Integer> obtenerPropiedadesJugadorSegunEstadoHipoteca(boolean estadoHipoteca){
         ArrayList<Integer> propiedades = new ArrayList<>();
         ArrayList<TituloPropiedad> prop = jugadorActual.obtenerPropiedades(estadoHipoteca);
         ArrayList<Casilla> casillas = tablero.getCasillas();
